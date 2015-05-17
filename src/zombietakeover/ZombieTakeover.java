@@ -4,7 +4,15 @@ import byui.cit260.zTakeover.model.Game;
 import byui.cit260.zTakeover.model.Scene;
 import byui.cit260.zTakeover.model.Map;
 import byui.cit260.zTakeover.model.Ability;
+import byui.cit260.zTakeover.model.Food;
+import byui.cit260.zTakeover.model.FoundObjects;
+import byui.cit260.zTakeover.model.GameCharacter;
+import byui.cit260.zTakeover.model.Items;
 import byui.cit260.zTakeover.model.Location;
+import byui.cit260.zTakeover.model.Player;
+import byui.cit260.zTakeover.model.Weapons;
+import java.util.HashSet;
+import java.util.Set;
 /**
  *
  * @author Caleb Cragun and Nathan Grow
@@ -57,6 +65,54 @@ public class ZombieTakeover {
         
         String startLocation = start.toString();
         System.out.println(startLocation);
+        
+        //Food class test
+        Food bread = new Food();
+        bread.setAddHealth(25);
+        
+        String breadInfo = bread.toString();
+        System.out.println(breadInfo);
+        
+        //FoundObjects class test
+        FoundObjects zippoLighter = new FoundObjects();
+        zippoLighter.setAddAbility(fiBreath);
+
+        String zippoLighterInfo = zippoLighter.toString();
+        System.out.println(zippoLighterInfo);
+        
+        //GameCharacter class test
+        GameCharacter brute = new GameCharacter();
+        brute.setHealth(150);
+        brute.setRace("Brute");
+        brute.setSpeed(8);
+
+        String bruteInfo = brute.toString();
+        System.out.println(bruteInfo);
+        
+        //Items class test
+        Items zipLighter = new Items();
+        zipLighter.setName("Zippo Lighter");
+        zipLighter.setDescription("When consumed, gives the ability Fire Breath.");
+        zipLighter.setAmount(1);
+        
+        String zipLighterInfo = zipLighter.toString();
+        System.out.println(zipLighterInfo);
+        
+        //Player class test
+        Player playerOne = new Player();
+        playerOne.setName("Alfred");
+        
+        String playerOneInfo = playerOne.toString();
+        System.out.println(playerOneInfo);
+        
+        //Weapons class test
+        Weapons baseballBat = new Weapons();
+        baseballBat.setPower(4);
+        
+        String baseballBatInfo = baseballBat.toString();
+        System.out.println(baseballBatInfo);
+        
+        
     }
     
 }
