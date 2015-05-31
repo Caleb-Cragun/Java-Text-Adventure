@@ -32,4 +32,24 @@ public class SceneControl {
             return output;
         }
     }
+        
+    public boolean checkSpecialEncounter(double stepCounter, double numItems){
+        if(stepCounter <= 0){
+            return false;
+        }
+        else if(numItems <= 0){
+            return false;
+        }
+        else{
+            double chance = Math.sqrt(stepCounter * numItems) % 2;
+        
+            if(chance == 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+    
 }

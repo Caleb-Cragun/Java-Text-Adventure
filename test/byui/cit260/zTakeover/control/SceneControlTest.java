@@ -178,8 +178,93 @@ public class SceneControlTest {
         stepCounter = 7.0;
         numItems = 3.0;
         randomNum = 5.0;
-        expResult = 243.0;
+        expResult = 250.0;
         result = instance.brokenShovelDamage(stepCounter, numItems, randomNum);
         assertEquals(expResult, result, 0.0);
+    }
+    
+    /**
+     * Test cases for checkSpecialEncounter algorithm
+     */
+    @Test
+    public void testCheckSpecialEncounter() {
+        System.out.println("checkSpecialEncounter");
+        /**
+         * Test case #1
+         */
+        System.out.println("\tTest Case #1");
+        double stepCounter = 1.0;
+        double numItems = 4.0;
+        SceneControl instance = new SceneControl();
+        boolean expResult = true;
+        boolean result;
+        result = instance.checkSpecialEncounter(stepCounter, numItems);
+        assertEquals(expResult, result);
+    
+        /**
+         * Test case #2
+         */
+        System.out.println("\tTest Case #2");
+        stepCounter = -2.0;
+        numItems = 5.0;
+        
+        expResult = false;
+        result = instance.checkSpecialEncounter(stepCounter, numItems);
+        assertEquals(expResult, result);
+        
+        /**
+         * Test case #3
+         */
+        System.out.println("\tTest Case #3");
+        stepCounter = 3.0;
+        numItems = -1.0;
+        
+        expResult = false;
+        result = instance.checkSpecialEncounter(stepCounter, numItems);
+        assertEquals(expResult, result);
+        
+        /**
+         * Test case #4
+         */
+        System.out.println("\tTest Case #4");
+        stepCounter = 4.0;
+        numItems = 0.0;
+        
+        expResult = false;
+        result = instance.checkSpecialEncounter(stepCounter, numItems);
+        assertEquals(expResult, result);
+        
+        /**
+         * Test case #5
+         */
+        System.out.println("\tTest Case #5");
+        stepCounter = 1.0;
+        numItems = 1.0;
+        
+        expResult = false;
+        result = instance.checkSpecialEncounter(stepCounter, numItems);
+        assertEquals(expResult, result);
+        
+        /**
+         * Test case #6
+         */
+        System.out.println("\tTest Case #6");
+        stepCounter = 1.0;
+        numItems = 10.0;
+        
+        expResult = false;
+        result = instance.checkSpecialEncounter(stepCounter, numItems);
+        assertEquals(expResult, result);
+        
+        /**
+         * Test case #7
+         */
+        System.out.println("\tTest Case #7");
+        stepCounter = 16.0;
+        numItems = 1.0;
+        
+        expResult = true;
+        result = instance.checkSpecialEncounter(stepCounter, numItems);
+        assertEquals(expResult, result);
     }
 }
