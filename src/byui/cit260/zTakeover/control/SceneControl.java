@@ -19,4 +19,17 @@ public class SceneControl {
             return output;
         }
     }
+    
+    public double brokenShovelDamage(double stepCounter, double numItems, double randomNum){
+        if(stepCounter<=0){
+            return -1;
+        }else if(numItems<0){
+            return -1;
+        }else if (randomNum<0||randomNum>5){
+            return -1;
+        }else{
+            double output=stepCounter+Math.pow(numItems,randomNum);
+            return output;
+        }
+    }
 }
