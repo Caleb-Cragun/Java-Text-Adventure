@@ -14,8 +14,6 @@ public class StartProgramView {
         this.displayBanner();
         //Get the player's name
         String playerName = this.getPlayerName();
-        //Get character class
-        String className = this.getClassName();
         //Create gameCharacter
         Player player = ProgramControl.createPlayer(playerName);
         //Display welcome message
@@ -69,42 +67,6 @@ public class StartProgramView {
             }
         }
         return playerName;
-    }
-
-    public String getClassName() {
-        String className = "";
-        String selection = "";
-        boolean valid=false;
-        //Input stream
-        Scanner input = new Scanner(System.in);
-        System.out.println("Select class: "
-                        +"\nA-Monk "
-                        +"\nB-Swashbuckler "
-                        +"\nC-Samurai");
-        selection = input.nextLine();
-        do{
-        switch(selection){
-            case "a":
-            case "A":
-                className="Monk";
-                valid=true;
-                break;
-            case "b":
-            case "B":
-                className="Swashbuckler";
-                valid=true;
-                break;
-            case "c":
-            case "C":
-                className="Samurai";
-                valid=true;
-                break;
-            default:
-                System.out.println("Invalid class. Please select a valid class.");
-        }
-        }while(valid!=true);
-        System.out.println(className);
-        return className;
     }
 
     private void displayWelcomeMessage(Player player) {

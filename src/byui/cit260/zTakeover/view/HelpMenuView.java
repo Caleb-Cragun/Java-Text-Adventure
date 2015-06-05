@@ -1,24 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package byui.cit260.zTakeover.view;
 
-import byui.cit260.zTakeover.control.GameControl;
 import java.util.Scanner;
-import zombietakeover.ZombieTakeover;
 
-public class MainMenuView {
+/**
+ *
+ * @author The King's Wit
+ */
+public class HelpMenuView {
     private final String MENU = "\n"
             +"\n-------------------------"
-            +"\n|      Main Menu        |"
+            +"\n|      Help Menu        |"
             +"\n-------------------------"
-            +"\nN-New Game"
-            +"\nL-Load Game"
-            +"\nS-Save Game"
-            +"\nH-Help Menu"
-            +"\nQ-Quit Game"
+            +"\nG-Goal of game"
+            +"\nM-Moving"
+            +"\nP-Pick up items"
+            +"\nC-Combat Help"
+            +"\nQ-Quit Help Menu"
             +"\n-------------------------";
-    
     void displayMenu() {
         char selection = ' ';
-        do{
+        do{  
             //Displays the main menu
             System.out.println(MENU);
             
@@ -29,9 +35,8 @@ public class MainMenuView {
             
             //Do action based on selection
             this.doAction(selection);
-        } while (selection!='h'&&selection!='q');
+        }while (selection!='q');
     }
-
     private String getInput() {
             
         boolean valid = false;
@@ -60,22 +65,26 @@ public class MainMenuView {
 
     private void doAction(char selection) {
         switch (selection){
-            case 'N':
-            case 'n':
-                this.startNewGame();
+            case 'G':
+            case 'g':
+                System.out.println("Survive in the harsh environment of the city and defeat the hazmat team to win.");
                 break;
-            case 'L':
-            case 'l':
-                this.loadGame();
+            case 'M':
+            case 'm':
+                System.out.println("To move the character, use the following commands:"
+                                +"\nNorth"
+                                +"\nEast"
+                                +"\nSouth"
+                                +"\nWest"
+                                +"\nThese commands will move your character the direction typed.");
                 break;
-            case 'S':
-            case 's':
-                this.saveGame();
+            case 'P':
+            case 'p':
+                System.out.println("Use the grab command with the item name to pick items up. Item names will be displayed in the area with that item.");
                 break;
-            case 'H':
-            case 'h':
-                this.displayHelpMenu();
-                this.displayMenu();
+            case 'C':
+            case 'c':
+                System.out.println("Combat is done in the encounters. A list of items and abilities will diplayed during combat that you can choose from.");
                 break;
             case 'Q':
             case 'q':
@@ -84,29 +93,6 @@ public class MainMenuView {
                 System.out.println("***Invalid entry, try again.***");
                 break;
         }
-    }
-
-    private void startNewGame() {
-        //start a new game
-        GameControl.createNewGame(ZombieTakeover.getPlayer());
-        
-        //Display game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
-    }
-
-    private void loadGame() {
-        System.out.println("*** loadGame function called ***");    
-    }
-
-    private void saveGame() {
-        System.out.println("*** saveGame function called ***");
-    }
-
-    private void displayHelpMenu() {
-         //Display help menu
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
     }
     
 }
