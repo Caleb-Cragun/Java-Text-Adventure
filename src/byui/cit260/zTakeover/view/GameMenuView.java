@@ -94,9 +94,8 @@ public class GameMenuView {
     }
 
     private void displayInventory() {
-        System.out.println("***inventoryView function called***");
-        //InventoryView inventory = new InventoryView();
-        //inventory.displayMenu;
+        InventoryView inventory = new InventoryView();
+        inventory.displayInventory();
     }
 
     private void displayFootstepCounter() {
