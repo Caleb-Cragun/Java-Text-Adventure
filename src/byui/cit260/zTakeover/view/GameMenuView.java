@@ -5,6 +5,7 @@
  */
 package byui.cit260.zTakeover.view;
 
+import byui.cit260.zTakeover.control.CharacterControl;
 import java.util.Scanner;
 
 public class GameMenuView {
@@ -107,7 +108,8 @@ public class GameMenuView {
     }
 
     private void moveCharacter() {
-        System.out.println("***moveCharacter function called***");
+        CharacterControl character = new CharacterControl();
+        character.moveCharacter();
     }
 
     private void viewMap() {
