@@ -49,16 +49,32 @@ public class CharacterControl {
 
     private void doAction(char selection) {
         if(selection=='n'){
-            System.out.println("***moveNorth function called***");
+            this.moveNorth();
         }else if(selection=='e'){
-            System.out.println("***moveEast function called***");
+            this.moveEast();
         }else if(selection=='s'){
-            System.out.println("***moveSouth function called***");
+            this.moveSouth();
         }else if(selection=='w'){
-            System.out.println("***moveWest function called***");
+            this.moveWest();
         }else if(selection=='b'){
         }else{
             System.out.println("***Invalid direction-try again***");
         }
+    }
+
+    private void moveNorth() {
+        System.out.println("***moveNorth function called***");
+    }
+
+    private void moveEast() {
+        System.out.println("***moveEast function called***");
+    }
+
+    private void moveSouth() {
+        System.out.println("***moveSouth function called***");
+    }
+
+    private void moveWest() {
+        System.out.println("***moveWest function called***");
     }
 }
