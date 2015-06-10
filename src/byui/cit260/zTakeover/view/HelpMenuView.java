@@ -50,6 +50,7 @@ public class HelpMenuView {
             
             //Get name and trim off blanks
             userInput = input.nextLine();
+            userInput = userInput.toLowerCase();
             userInput = userInput.trim();
             
             
@@ -65,11 +66,9 @@ public class HelpMenuView {
 
     private void doAction(char selection) {
         switch (selection){
-            case 'G':
             case 'g':
                 System.out.println("Survive in the harsh environment of the city and defeat the hazmat team to win.");
                 break;
-            case 'M':
             case 'm':
                 System.out.println("To move the character, use the following commands:"
                                 +"\nNorth"
@@ -78,15 +77,12 @@ public class HelpMenuView {
                                 +"\nWest"
                                 +"\nThese commands will move your character the direction typed.");
                 break;
-            case 'P':
             case 'p':
                 System.out.println("Use the grab command with the item name to pick items up. Item names will be displayed in the area with that item.");
                 break;
-            case 'C':
             case 'c':
                 System.out.println("Combat is done in the encounters. A list of items and abilities will diplayed during combat that you can choose from.");
                 break;
-            case 'Q':
             case 'q':
                 return;
             default:

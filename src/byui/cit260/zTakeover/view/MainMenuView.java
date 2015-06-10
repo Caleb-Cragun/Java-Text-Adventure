@@ -29,7 +29,7 @@ public class MainMenuView {
             
             //Do action based on selection
             this.doAction(selection);
-        } while (selection!='h'&&selection!='q');
+        } while (selection!='Q');
     }
 
     private String getInput() {
@@ -45,6 +45,7 @@ public class MainMenuView {
             
             //Get name and trim off blanks
             userInput = input.nextLine();
+            userInput = userInput.toUpperCase();
             userInput = userInput.trim();
             
             
@@ -61,24 +62,19 @@ public class MainMenuView {
     private void doAction(char selection) {
         switch (selection){
             case 'N':
-            case 'n':
                 this.startNewGame();
                 break;
             case 'L':
-            case 'l':
                 this.loadGame();
                 break;
             case 'S':
-            case 's':
                 this.saveGame();
                 break;
             case 'H':
-            case 'h':
                 this.displayHelpMenu();
                 this.displayMenu();
                 break;
             case 'Q':
-            case 'q':
                 return;
             default:
                 System.out.println("***Invalid entry, try again.***");
