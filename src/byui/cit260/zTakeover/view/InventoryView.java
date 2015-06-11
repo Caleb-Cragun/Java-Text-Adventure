@@ -70,7 +70,7 @@ public class InventoryView {
     private void doAction(char selection) {
         switch (selection){
             case 'C':
-                this.consumablesMenu();
+                this.consumableMenu();
                 break;
             case 'O':
                 this.otherItemsMenu();
@@ -84,13 +84,6 @@ public class InventoryView {
                 System.out.println("***Invalid entry, try again.***");
                 break;
         }
-    
-    
-    
-}
-
-    private void consumablesMenu() {
-        System.out.println("***consumablesMenu function called***");
     }
 
     private void otherItemsMenu() {
@@ -100,4 +93,13 @@ public class InventoryView {
     private void weaponsMenu() {
         System.out.println("***weaponsMenu function called***");
     }
+
+    private void consumableMenu() {
+        ConsumableMenu consumables = new ConsumableMenu();
+        consumables.displayConsumables();
+    }
+    
+    
 }
+    
+ 
