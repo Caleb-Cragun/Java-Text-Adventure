@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package byui.cit260.zTakeover.control;
-import java.lang.Math;
 
 public class SceneControl {
     public double combatSpellDamage(double stepCounter,double numItems,double randomNum){        

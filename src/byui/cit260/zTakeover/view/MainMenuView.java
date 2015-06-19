@@ -1,11 +1,11 @@
 package byui.cit260.zTakeover.view;
 
 import byui.cit260.zTakeover.control.GameControl;
-import java.util.Scanner;
 import zombietakeover.ZombieTakeover;
 
-public class MainMenuView {
-    private final String MENU = "\n"
+public class MainMenuView extends View{
+    public MainMenuView(){
+        super("\n"
             +"\n-------------------------"
             +"\n|      Main Menu        |"
             +"\n-------------------------"
@@ -14,52 +14,14 @@ public class MainMenuView {
             +"\nS-Save Game"
             +"\nH-Help Menu"
             +"\nQ-Quit Game"
-            +"\n-------------------------";
+            +"\n-------------------------");
+    }
     
-    void displayMenu() {
-        char selection = ' ';
-        do{
-            //Displays the main menu
-            System.out.println(MENU);
-            
-            //Get users input
-            String input = this.getInput();
-            //Get first character of string
-            selection = input.charAt(0);
-            
-            //Do action based on selection
-            this.doAction(selection);
-        } while (selection!='Q');
-    }
-
-    private String getInput() {
-            
-        boolean valid = false;
-        String userInput = "";
-        //Input stream
-        Scanner input = new Scanner(System.in);
-        
-        while(valid!=true){
-            //Prompt user for name
-            System.out.println("Enter Selection: ");
-            
-            //Get name and trim off blanks
-            userInput = input.nextLine();
-            userInput = userInput.toUpperCase();
-            userInput = userInput.trim();
-            
-            
-            //Checks to see if the name is valid
-            if (userInput.length()==0){
-                System.out.println("Invalid input - try another option");
-            }else{
-                valid=true;
-            }
-        }
-        return userInput;
-    }
-
-    private void doAction(char selection) {
+    @Override
+    public boolean doAction(Object obj) {
+        String value=(String)obj;
+        value=value.toUpperCase();
+        char selection=value.charAt(0);
         switch (selection){
             case 'N':
                 this.startNewGame();
@@ -72,14 +34,15 @@ public class MainMenuView {
                 break;
             case 'H':
                 this.displayHelpMenu();
-                this.displayMenu();
+                this.display();
                 break;
             case 'Q':
-                return;
+                return false;
             default:
                 System.out.println("***Invalid entry, try again.***");
                 break;
         }
+        return true;
     }
 
     private void startNewGame() {
