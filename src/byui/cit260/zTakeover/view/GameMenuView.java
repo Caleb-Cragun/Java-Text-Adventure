@@ -69,7 +69,8 @@ public class GameMenuView extends View {
     }
 
     private void displayAbilities() {
-        System.out.println("***displayAbilities function called***");
+        AbilitiesView abilityList = new AbilitiesView();
+        abilityList.display();
     }
 
     private void moveCharacter() {
