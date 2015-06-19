@@ -42,16 +42,17 @@ public class InventoryView extends View{
                 this.weaponsMenu();
                 break;
             case 'Q':
-                return false;
+                return true;
             default:
                 System.out.println("***Invalid entry, try again.***");
                 break;
         }
-        return true;
+        return false;
     }
 
     private void otherItemsMenu() {
-        System.out.println("***otherItemsMenu function called***");
+        OtherItemsMenu otherItems = new OtherItemsMenu();
+        otherItems.display();
     }
 
     private void weaponsMenu() {

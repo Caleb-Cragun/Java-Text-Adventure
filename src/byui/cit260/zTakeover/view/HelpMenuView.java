@@ -47,12 +47,12 @@ public class HelpMenuView extends View{
                 System.out.println("Combat is done in the encounters. A list of items and abilities will diplayed during combat that you can choose from.");
                 break;
             case 'B':
-                return false;
+                return true;
             default:
                 System.out.println("***Invalid entry, try again.***");
                 break;
         }
-        return true;
+        return false;
     }
     
 }

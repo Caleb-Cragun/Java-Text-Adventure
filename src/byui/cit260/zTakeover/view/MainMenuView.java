@@ -37,12 +37,12 @@ public class MainMenuView extends View{
                 this.display();
                 break;
             case 'Q':
-                return false;
+                return true;
             default:
                 System.out.println("***Invalid entry, try again.***");
                 break;
         }
-        return true;
+        return false;
     }
 
     private void startNewGame() {

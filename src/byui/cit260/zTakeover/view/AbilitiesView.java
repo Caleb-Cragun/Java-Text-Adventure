@@ -62,12 +62,12 @@ public class AbilitiesView extends View{
                 this.knowledgeDes();
                 break;
             case 'Q':
-                return false;
+                return true;
             default:
                 System.out.println("***Invalid entry, try again.***");
                 break;
         }
-        return true;
+        return false;
     }
 
     private void magicDes() {

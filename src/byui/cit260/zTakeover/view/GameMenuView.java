@@ -51,12 +51,12 @@ public class GameMenuView extends View {
                 this.saveGame();
                 break;
             case 'e':
-                return false;
+                return true;
             default:
                 System.out.println("***Invalid entry, try again.***");
                 break;
         }
-        return true;
+        return false;
     }
 
     private void displayInventory() {
