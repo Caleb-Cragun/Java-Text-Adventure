@@ -11,10 +11,10 @@ import java.util.Scanner;
  *
  * @author Onsite
  */
-public class ConsumableMenu {
+public class ConsumableMenu extends View {
            
-        
-            final String CONSUMABLES = "\n"
+    public ConsumableMenu(){
+        super("\n"
             +"\n-------------------------"
             +"\n|    Consumable Items   |"
             +"\n-------------------------"
@@ -24,53 +24,9 @@ public class ConsumableMenu {
             +"\nH - Hamburger (1)"
             +"\nG - Granola Bar (2)"
             +"\nE - Exit Consumables Menu"
-            +"\n-------------------------";
-    
-    
-    void displayConsumables() {
-        char selection = ' ';
-        do{
-            //Displays the main menu
-            System.out.println(CONSUMABLES);
-            
-            //Get users input
-            String input = this.getThisInput();
-            //Get first character of string
-            selection = input.charAt(0);
-            
-            //Do action based on selection
-            this.doThisAction(selection);
-        } while (selection!='e');
-        
+            +"\n-------------------------");
     }
-
-    private String getThisInput() {
-            
-        boolean valid = false;
-        String userInput = "";
-        //Input stream
-        Scanner input = new Scanner(System.in);
-        
-        while(valid!=true){
-            //Prompt user for name
-            System.out.println("Enter Selection: ");
-            
-            //Get name and trim off blanks
-            userInput = input.nextLine();
-            userInput = userInput.toLowerCase();
-            userInput = userInput.trim();
-            
-            
-            //Checks to see if the name is valid
-            if (userInput.length()==0){
-                System.out.println("Invalid input - try another option");
-            }
-            else{
-                valid=true;
-            }
-        }
-        return userInput;
-    }
+    
     
     private void getQuantity(double food) {
         
@@ -100,7 +56,12 @@ public class ConsumableMenu {
         }
     }
 
-    private void doThisAction(char selection) {
+    @Override
+    public boolean doAction(Object obj) {
+        String value=(String)obj;
+        value=value.toLowerCase();
+        char selection=value.charAt(0);
+        
         switch (selection){
             case 'b':
                 this.consumeBread();
@@ -112,12 +73,12 @@ public class ConsumableMenu {
                 this.consumeGranolaBar();
                 break;
             case 'e':
-                return;
+                return false;
             default:
                 System.out.println("***Invalid entry, try again.***");
                 break;
         }
-        
+        return true;
     }
 
 

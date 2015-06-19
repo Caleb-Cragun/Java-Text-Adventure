@@ -61,7 +61,7 @@ public class GameMenuView extends View {
 
     private void displayInventory() {
         InventoryView inventory = new InventoryView();
-        inventory.displayInventory();
+        inventory.display();
     }
 
     private void displayFootstepCounter() {

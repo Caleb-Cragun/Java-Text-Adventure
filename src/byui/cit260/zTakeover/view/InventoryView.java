@@ -5,15 +5,14 @@
  */
 package byui.cit260.zTakeover.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Onsite
  */
-public class InventoryView {
+public class InventoryView extends View{
     
-    private final String INVENTORY = "\n"
+    public InventoryView(){
+    super("\n"
             +"\n-------------------------"
             +"\n|       Inventory        |"
             +"\n-------------------------"
@@ -21,53 +20,17 @@ public class InventoryView {
             +"\nO - Other Items"
             +"\nW - Weapons"
             +"\nQ - Quit"
-            +"\n-------------------------";
+            +"\n-------------------------");
+    }
     
-    void displayInventory() {
-        char selection = ' ';
-        do{
-            //Displays the main menu
-            System.out.println(INVENTORY);
-            
-            //Get users input
-            String input = this.getInput();
-            //Get first character of string
-            selection = input.charAt(0);
-            
-            //Do action based on selection
-            this.doAction(selection);
-        } while (selection!='Q');
-    }
 
-    private String getInput() {
-            
-        boolean valid = false;
-        String userInput = "";
-        //Input stream
-        Scanner input = new Scanner(System.in);
+
+    @Override
+    public boolean doAction(Object obj) {
+        String value=(String)obj;
+        value=value.toUpperCase();
+        char selection=value.charAt(0);
         
-        while(valid!=true){
-            //Prompt user for name
-            System.out.println("Enter Selection: ");
-            
-            //Get name and trim off blanks
-            userInput = input.nextLine();
-            userInput = userInput.toUpperCase();
-            userInput = userInput.trim();
-            
-            
-            //Checks to see if the name is valid
-            if (userInput.length()==0){
-                System.out.println("Invalid input - try another option");
-            }
-            else{
-                valid=true;
-            }
-        }
-        return userInput;
-    }
-
-    private void doAction(char selection) {
         switch (selection){
             case 'C':
                 this.consumableMenu();
@@ -79,11 +42,12 @@ public class InventoryView {
                 this.weaponsMenu();
                 break;
             case 'Q':
-                return;
+                return false;
             default:
                 System.out.println("***Invalid entry, try again.***");
                 break;
         }
+        return true;
     }
 
     private void otherItemsMenu() {
@@ -96,7 +60,7 @@ public class InventoryView {
 
     private void consumableMenu() {
         ConsumableMenu consumables = new ConsumableMenu();
-        consumables.displayConsumables();
+        consumables.display();
     }
     
     
