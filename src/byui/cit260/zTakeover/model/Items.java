@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author Onsite
  */
 public class Items implements Serializable{
-    
+    private GameCharacter character;
     private String name;
     private String description;
     private double amount;
@@ -48,7 +48,14 @@ public class Items implements Serializable{
         this.amount = amount;
     }
 
-    
+    public GameCharacter getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(GameCharacter character) {
+        this.character = character;
+    }
+
     
     @Override
     public String toString() {

@@ -5,6 +5,7 @@
  */
 package byui.cit260.zTakeover.model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -12,7 +13,9 @@ import java.util.Objects;
  * @author Onsite
  */
 public class GameCharacter {
-    
+    private ArrayList<Items> item=new ArrayList<>();
+    private ArrayList<Ability> abil=new ArrayList<>();
+    private Player player1;
     private String race;
     private double health;
     private double speed;
@@ -43,6 +46,32 @@ public class GameCharacter {
     public void setSpeed(double speed) {
         this.speed = speed;
     }
+
+    public ArrayList<Items> getItem() {
+        return item;
+    }
+
+    public void setItem(ArrayList<Items> item) {
+        this.item = item;
+    }
+
+    public ArrayList<Ability> getAbil() {
+        return abil;
+    }
+
+    public void setAbil(ArrayList<Ability> abil) {
+        this.abil = abil;
+    }
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public void setPlayer1(Player player1) {
+        this.player1 = player1;
+    }
+    
+    
 
     @Override
     public String toString() {

@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Player implements Serializable{
     
     private String name;
-
+    private Game game1;
     
     public Player() {
     }
@@ -29,6 +29,15 @@ public class Player implements Serializable{
         this.name = name;
     }
 
+    public Game getGame1() {
+        return game1;
+    }
+
+    public void setGame1(Game game1) {
+        this.game1 = game1;
+    }
+
+    
     @Override
     public String toString() {
         return "Player{" + "name=" + name + '}';
