@@ -5,12 +5,15 @@
  */
 package byui.cit260.zTakeover.model;
 import java.io.Serializable;
+import java.util.ArrayList;
 /**
  *
  * @author Caleb Cragun and Nathan Grow
  */
 public class Game implements Serializable{
     private int stepCounter;
+    private ArrayList<Player> player1=new ArrayList<>();
+    private Map map1;
 
     public Game() {
         
@@ -24,6 +27,22 @@ public class Game implements Serializable{
         this.stepCounter = stepCounter;
     }
 
+    public ArrayList<Player> getPlayer1() {
+        return player1;
+    }
+
+    public void setPlayer1(ArrayList<Player> player1) {
+        this.player1 = player1;
+    }
+
+    public Map getMap1() {
+        return map1;
+    }
+
+    public void setMap1(Map map1) {
+        this.map1 = map1;
+    }
+    
     @Override
     public String toString() {
         return "Game{" + "stepCounter=" + stepCounter + '}';

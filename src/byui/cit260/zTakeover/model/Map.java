@@ -5,6 +5,7 @@
  */
 package byui.cit260.zTakeover.model;
 import java.io.Serializable;
+import java.util.ArrayList;
 /**
  *
  * @author Caleb Cragun
@@ -12,6 +13,8 @@ import java.io.Serializable;
 public class Map implements Serializable{
     private int rowCount;
     private int columnCount;
+    private ArrayList<Game> game1=new ArrayList<>();
+    private Location[] locations;
 
     public Map() {
     }
@@ -31,6 +34,23 @@ public class Map implements Serializable{
     public void setColumnCount(int columnCount) {
         this.columnCount = columnCount;
     }
+
+    public ArrayList<Game> getGame1() {
+        return game1;
+    }
+
+    public void setGame1(ArrayList<Game> game1) {
+        this.game1 = game1;
+    }
+
+    public Location[] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[] locations) {
+        this.locations = locations;
+    }
+
 
     @Override
     public String toString() {

@@ -12,6 +12,7 @@ import java.io.Serializable;
 public class Location implements Serializable{
     private int x;
     private int y;
+    private Map map1;
 
     public Location() {
     }
@@ -32,6 +33,14 @@ public class Location implements Serializable{
         this.y = y;
     }
 
+    public Map getMap1() {
+        return map1;
+    }
+
+    public void setMap1(Map map1) {
+        this.map1 = map1;
+    }
+    
     @Override
     public String toString() {
         return "Location{" + "x=" + x + ", y=" + y + '}';

@@ -16,6 +16,7 @@ public class Player implements Serializable{
     
     private String name;
     private Game game1;
+    private GameCharacter character;
     
     public Player() {
     }
@@ -37,7 +38,14 @@ public class Player implements Serializable{
         this.game1 = game1;
     }
 
-    
+    public GameCharacter getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(GameCharacter character) {
+        this.character = character;
+    }
+        
     @Override
     public String toString() {
         return "Player{" + "name=" + name + '}';
