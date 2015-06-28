@@ -14,7 +14,6 @@ public class Scene implements Serializable{
     private String hiddenitem;
     private String npc;
     private String encounter;
-    private Location[] locations;
 
     public Scene() {
     }
@@ -49,15 +48,7 @@ public class Scene implements Serializable{
 
     public void setEncounter(String encounter) {
         this.encounter = encounter;
-    }
-
-    public Location[] getLocations() {
-        return locations;
-    }
-
-    public void setLocations(Location[] locations) {
-        this.locations = locations;
-    }
+    }    
         
     @Override
     public String toString() {

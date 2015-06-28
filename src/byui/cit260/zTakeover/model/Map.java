@@ -13,10 +13,30 @@ import java.util.ArrayList;
 public class Map implements Serializable{
     private int rowCount;
     private int columnCount;
-    private ArrayList<Game> game1=new ArrayList<>();
-    private Location[] locations;
+    private Location[][] locations;
 
     public Map() {
+    }
+
+    public Map(int rows, int columns) {
+        if (rows<0||columns<0){
+            System.out.println("Invalid map size.");
+            return;
+        }
+        this.rowCount=rows;
+        this.columnCount=columns;
+        
+        //Create 2d array for location objects
+        this.locations=new Location[rowCount][columnCount];
+        
+        for(int row=0;row<rowCount;row++){
+            for(int column=0;column<columnCount;column++){
+                Location location=new Location();
+                location.setY(column);
+                location.setX(row);
+                locations[row][column]=location;
+            }
+        }
     }
     
     public int getRowCount() {
@@ -35,19 +55,11 @@ public class Map implements Serializable{
         this.columnCount = columnCount;
     }
 
-    public ArrayList<Game> getGame1() {
-        return game1;
-    }
-
-    public void setGame1(ArrayList<Game> game1) {
-        this.game1 = game1;
-    }
-
-    public Location[] getLocations() {
+    public Location[][] getLocations() {
         return locations;
     }
 
-    public void setLocations(Location[] locations) {
+    public void setLocations(Location[][] locations) {
         this.locations = locations;
     }
 

@@ -11,61 +11,21 @@ import java.io.Serializable;
  *
  * @author Onsite
  */
-public class Weapons implements Serializable{
-    
+public enum Weapons implements Serializable{
+    SHOVEL(15.0),
+    FIST(5.0),
+    BAT(7.0),
+    BRASS_KNUCKLES(6.0),
+    GOLF_CLUB(8.0),
+    BLUDGEON(9.0),
+    BOWIE_KNIFE(13.0);
     private double power;
-
     
-    public Weapons() {
+    Weapons(double power) {
+        this.power=power;
     }
-    
-    
     
     public double getPower() {
         return power;
     }
-
-    public void setPower(double power) {
-        this.power = power;
-    }
-
-    @Override
-    public String toString() {
-        return "Weapons{" + "power=" + power + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.power) ^ (Double.doubleToLongBits(this.power) >>> 32));
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Weapons other = (Weapons) obj;
-        if (Double.doubleToLongBits(this.power) != Double.doubleToLongBits(other.power)) {
-            return false;
-        }
-        return true;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

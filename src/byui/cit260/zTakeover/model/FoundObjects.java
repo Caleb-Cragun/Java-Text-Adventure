@@ -12,11 +12,21 @@ import java.util.Objects;
  *
  * @author Onsite
  */
-public class FoundObjects implements Serializable{
-    
+public enum FoundObjects implements Serializable{
+    STAFF("Magic"),
+    FIRE_EXTINGUISHER("Ignition proof"),
+    BOTTLED_GHOST("Physical damage proof"),
+    CATFISH("Night vision"),
+    RABBITS_FOOT("Fast"),
+    LEOPARD_FUR("Always first"),
+    BEAR_CLAW("Bear vitality"),
+    BARBIE_DOLL("Cuteness"),
+    MARBLES("Sane"),
+    ENCYCLOPEDIA("Knowledge on");
     private String addAbility;
 
-    public FoundObjects() {
+    FoundObjects(String addAbility) {
+        this.addAbility=addAbility;
     }
 
     public String getAddAbility() {
@@ -26,35 +36,4 @@ public class FoundObjects implements Serializable{
     public void setAddAbility(String addAbility) {
         this.addAbility = addAbility;
     }
-
-    @Override
-    public String toString() {
-        return "FoundObjects{" + "addAbility=" + addAbility + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.addAbility);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final FoundObjects other = (FoundObjects) obj;
-        if (!Objects.equals(this.addAbility, other.addAbility)) {
-            return false;
-        }
-        return true;
-    }
-    
-    
-    
-    
 }

@@ -12,8 +12,9 @@ import java.util.ArrayList;
  */
 public class Game implements Serializable{
     private int stepCounter;
-    private ArrayList<Player> player1=new ArrayList<>();
-    private Map map1;
+    private Player player;
+    private Map map;
+    private Items[] inventoryList;
 
     public Game() {
         
@@ -27,20 +28,22 @@ public class Game implements Serializable{
         this.stepCounter = stepCounter;
     }
 
-    public ArrayList<Player> getPlayer1() {
-        return player1;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setPlayer1(ArrayList<Player> player1) {
-        this.player1 = player1;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
-    public Map getMap1() {
-        return map1;
+    
+
+    public Map getMap() {
+        return map;
     }
 
-    public void setMap1(Map map1) {
-        this.map1 = map1;
+    public void setMap(Map map) {
+        this.map = map;
     }
     
     @Override
@@ -68,6 +71,10 @@ public class Game implements Serializable{
             return false;
         }
         return true;
+    }
+
+    public void setInventory(Items[] inventoryList) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

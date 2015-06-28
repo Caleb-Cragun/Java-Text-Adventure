@@ -13,6 +13,7 @@ public class Location implements Serializable{
     private int x;
     private int y;
     private Map map1;
+    private Scene scene;
 
     public Location() {
     }
@@ -40,6 +41,15 @@ public class Location implements Serializable{
     public void setMap1(Map map1) {
         this.map1 = map1;
     }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+    
     
     @Override
     public String toString() {
