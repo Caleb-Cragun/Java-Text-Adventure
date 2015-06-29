@@ -6,6 +6,8 @@
 package byui.cit260.zTakeover.view;
 
 import byui.cit260.zTakeover.control.CharacterControl;
+import byui.cit260.zTakeover.control.GameControl;
+import byui.cit260.zTakeover.model.Items;
 
 public class GameMenuView extends View {
         public GameMenuView(){
@@ -60,8 +62,19 @@ public class GameMenuView extends View {
     }
 
     private void displayInventory() {
-        InventoryView inventory = new InventoryView();
-        inventory.display();
+        Items[] inventory = GameControl.getSortedInventoryList();
+        
+        System.out.println("\nList of Inventory Items");
+        System.out.println("Description" + "\t"
+                         + "Required" + "\t"
+                         + "In Stock");
+        
+        // for each inventory item
+        for (Items inventoryItem : inventory) {
+            // DISPLAY the description, the required amount and amount in stock
+            System.out.println(inventoryItem.getDescription() + "\t   "
+                             + inventoryItem.getAmount());
+        }
     }
 
     private void displayFootstepCounter() {

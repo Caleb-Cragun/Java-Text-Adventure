@@ -74,7 +74,11 @@ public class Game implements Serializable{
     }
 
     public void setInventory(Items[] inventoryList) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.inventoryList = inventoryList;
+    }
+
+    public Items[] getInventory() {
+        return inventoryList;
     }
     
 }

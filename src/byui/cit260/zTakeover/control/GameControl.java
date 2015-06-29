@@ -138,4 +138,26 @@ public class GameControl {
     
         return inventory;
     }
+
+    public static Items[] getSortedInventoryList() {
+        
+        // get inventory list for the current game
+        Items[] originalInventoryList = ZombieTakeover.getCurrentGame().getInventory();
+        
+        //make a copy, original list
+        Items[] inventoryList = originalInventoryList.clone();
+        
+        //using a BubbleSort to sort the list of inventoryList by name
+        Items tempInventoryItem;
+        for (int i = 0; i < inventoryList.length-1; i++){
+            for (int j = 0; j < inventoryList.length-1-i; j++){
+                if (inventoryList[j].getDescription().compareToIgnoreCase(inventoryList[j + 1].getDescription()) > 0) {
+                    tempInventoryItem = inventoryList[j];
+                    inventoryList[j] = inventoryList[j+1];
+                    inventoryList[j+1] = tempInventoryItem;
+                }
+            }
+        }
+        return inventoryList;
+    }
 }
