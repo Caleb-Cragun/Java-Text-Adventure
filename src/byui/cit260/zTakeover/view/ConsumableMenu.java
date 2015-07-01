@@ -5,7 +5,9 @@
  */
 package byui.cit260.zTakeover.view;
 
+import byui.cit260.zTakeover.model.Items;
 import java.util.Scanner;
+import zombietakeover.ZombieTakeover;
 
 /**
  *
@@ -26,6 +28,41 @@ public class ConsumableMenu extends View {
             +"\nE - Exit Consumables Menu"
             +"\n-------------------------");
     }
+    
+    
+    /********************************************************************
+     * Testing Selection sort method
+     **********************************************************************/
+    
+ 
+    public static Items[] getSortedConsumableList() {
+        
+        // get inventory list for the current game
+        Items[] originalInventoryList = ZombieTakeover.getCurrentGame().getInventory();
+        
+        //make a copy, original list
+        Items[] consumableList = originalInventoryList.clone();
+        
+        //using a BubbleSort to sort the list of inventoryList by name
+        Items tempConsumableItem;
+        for (int i = 0; i < 2; i++){
+            for (int j = 0; j < 2-i; j++){
+                if (consumableList[j].getDescription().compareToIgnoreCase(consumableList[j + 1].getDescription()) > 0) {
+                    tempConsumableItem = consumableList[j];
+                    consumableList[j] = consumableList[j+1];
+                    consumableList[j+1] = tempConsumableItem;
+                }
+            }
+        }
+        return consumableList;
+    }
+    
+
+
+    /****************************************************
+        *END TEST
+    *******************************************************/
+    
     
     
     private void getQuantity(double food) {

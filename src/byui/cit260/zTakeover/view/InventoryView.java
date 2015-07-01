@@ -5,6 +5,8 @@
  */
 package byui.cit260.zTakeover.view;
 
+import byui.cit260.zTakeover.model.Items;
+
 /**
  *
  * @author Onsite
@@ -60,6 +62,21 @@ public class InventoryView extends View{
     }
 
     private void consumableMenu() {
+        Items[] consumableSort = ConsumableMenu.getSortedConsumableList();    
+            
+        System.out.println("\nList of Consumable Items");
+        System.out.println("Description" + "\t"
+                         + "In Stock");
+        
+        // for each inventory item
+        for (Items consumableItem : consumableSort) {
+            // DISPLAY the description, the required amount and amount in stock
+            System.out.println(consumableItem.getDescription() + "\t   "
+                             + consumableItem.getAmount());
+        }
+        
+        
+        // display original menu
         ConsumableMenu consumables = new ConsumableMenu();
         consumables.display();
     }

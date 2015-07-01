@@ -74,6 +74,11 @@ public class GameMenuView extends View {
             System.out.println(inventoryItem.getDescription() + "\t   "
                              + inventoryItem.getAmount());
         }
+        
+        // display other sub menus
+        InventoryView invView = new InventoryView();
+        invView.display();
+        
     }
 
     private void displayFootstepCounter() {
