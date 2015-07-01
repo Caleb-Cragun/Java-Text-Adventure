@@ -66,7 +66,6 @@ public class GameMenuView extends View {
         
         System.out.println("\nList of Inventory Items");
         System.out.println("Description" + "\t"
-                         + "Required" + "\t"
                          + "In Stock");
         
         // for each inventory item
@@ -82,8 +81,7 @@ public class GameMenuView extends View {
     }
 
     private void displayAbilities() {
-        AbilitiesView abilityList = new AbilitiesView();
-        abilityList.display();
+        GameControl.getSortedAbilityList();
     }
 
     private void moveCharacter() {

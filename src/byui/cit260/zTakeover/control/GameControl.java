@@ -5,6 +5,7 @@
  */
 package byui.cit260.zTakeover.control;
 
+import byui.cit260.zTakeover.model.Ability;
 import byui.cit260.zTakeover.model.Game;
 import byui.cit260.zTakeover.model.Items;
 import byui.cit260.zTakeover.model.Map;
@@ -130,11 +131,6 @@ public class GameControl {
         knife.setAmount(0);
         knife.setDescription("Bowie Knife");
         inventory[19]=knife;
-        
-        Items broken = new Items();
-        broken.setAmount(0);
-        broken.setDescription("Broken Shovel");
-        inventory[20]=broken;
     
         return inventory;
     }
@@ -159,5 +155,12 @@ public class GameControl {
             }
         }
         return inventoryList;
+    }
+    
+    public static Ability getSortedAbilityList(){
+        for(Ability a : Ability.values()){
+            System.out.println(a);
+        }
+        return null;
     }
 }

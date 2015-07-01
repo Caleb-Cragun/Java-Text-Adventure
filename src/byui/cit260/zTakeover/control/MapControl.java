@@ -36,7 +36,7 @@ public class MapControl {
                 +"on top of you, but your persistance pays off. Suddenly your "
                 +"clawing brings you to the surface and you look around. Your "
                 +"tombstone stits behind you and you find yourself in the dirty, "
-                +"deserted town you once new. All is silent, save the blowing "
+                +"deserted alley you once new. All is silent, save the blowing "
                 + "of the wind.");
         scenes[SceneType.start.ordinal()]=startingScene;
         
@@ -171,7 +171,7 @@ public class MapControl {
     }
 
     static void startAtLocation(Map map) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** startAtLocation function called ***");
     }
     
     public enum SceneType{
