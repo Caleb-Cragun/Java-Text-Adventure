@@ -5,18 +5,20 @@
  */
 package byui.cit260.zTakeover.control;
 
+import byui.cit260.zTakeover.exception.MapControlException;
 import byui.cit260.zTakeover.model.Game;
+import byui.cit260.zTakeover.model.GameCharacter;
 import byui.cit260.zTakeover.model.Location;
 import byui.cit260.zTakeover.model.Map;
+import byui.cit260.zTakeover.model.Player;
 import byui.cit260.zTakeover.model.Scene;
-import java.awt.image.BufferedImage;
 import zombietakeover.ZombieTakeover;
 
 /**
  *
  * @author The King's Wit
  */
-public class MapControl {
+public class MapControl{
     public static Map createMap(){
         Map map = new Map(20,20);
         Scene[] scenes = createScenes();
@@ -25,7 +27,7 @@ public class MapControl {
         return map;
     }
 
-    private static Scene[] createScenes() {
+    private static Scene[] createScenes(){
         Game game = ZombieTakeover.getCurrentGame();
         Scene[] scenes = new Scene[SceneType.values().length];
         Scene startingScene = new Scene();
@@ -50,8 +52,7 @@ public class MapControl {
                 +"You look up at the faces of those who are still remaining in "
                 +"the hospital. Horror and awe are indistinct between them all. "
                 +"You shamble off into the distnce, never to be seen again."
-                +"The end. Thanks for playing."
-                        );
+                +"The end. Thanks for playing.");
         return scenes;
     }
     
@@ -170,8 +171,11 @@ public class MapControl {
       
     }
 
-    static void startAtLocation(Map map) {
-        System.out.println("*** startAtLocation function called ***");
+    public static void startAtLocation(Map map) throws MapControlException{
+        Player player1 = ZombieTakeover.getPlayer();
+        int row = map.getRowCount();
+        int column = map.getColumnCount();
+        CharacterControl.moveCharacterToLocation(player1, row, column);
     }
     
     public enum SceneType{

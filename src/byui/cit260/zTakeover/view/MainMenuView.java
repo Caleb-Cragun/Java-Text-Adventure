@@ -1,6 +1,7 @@
 package byui.cit260.zTakeover.view;
 
 import byui.cit260.zTakeover.control.GameControl;
+import byui.cit260.zTakeover.exception.MapControlException;
 import zombietakeover.ZombieTakeover;
 
 public class MainMenuView extends View{
@@ -47,7 +48,11 @@ public class MainMenuView extends View{
 
     private void startNewGame() {
         //start a new game
-        GameControl.createNewGame(ZombieTakeover.getPlayer());
+        try{
+            GameControl.createNewGame(ZombieTakeover.getPlayer());
+        }catch (MapControlException me){
+            System.out.println(me.getMessage());
+        }
         
         //Display game menu
         GameMenuView gameMenu = new GameMenuView();

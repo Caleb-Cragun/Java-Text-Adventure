@@ -37,21 +37,12 @@ public class ConsumableMenu extends View {
             Scanner input = new Scanner(System.in);
         
             System.out.println("Enter Quantity: ");
-        
-            userQuantity = input.nextDouble();
-            
-            if(Double.isNaN(userQuantity)){
-                System.out.println("Invalid Input, please try again.");
-            }
-            else if(userQuantity > food){
-                System.out.println("Invalid Input, please try again.");
-            }
-            else if(userQuantity < 1){
-                System.out.println("Invalid Input, please try again.");
-            }
-            else{
-                addHealth(userQuantity);
-                break;
+            String value = this.getInput();
+            value = value.trim().toUpperCase();
+            try{
+                userQuantity = Double.parseDouble(value);
+            }catch (NumberFormatException nf){
+                System.out.println("\nYou must enter a valid number. Try again or enter E to exit.");
             }
         }
     }

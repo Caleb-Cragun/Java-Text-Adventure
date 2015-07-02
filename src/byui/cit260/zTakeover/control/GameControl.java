@@ -5,6 +5,7 @@
  */
 package byui.cit260.zTakeover.control;
 
+import byui.cit260.zTakeover.exception.MapControlException;
 import byui.cit260.zTakeover.model.Ability;
 import byui.cit260.zTakeover.model.Game;
 import byui.cit260.zTakeover.model.Items;
@@ -14,7 +15,7 @@ import zombietakeover.ZombieTakeover;
 
 public class GameControl {
 
-    public static void createNewGame(Player player) {
+    public static void createNewGame(Player player) throws MapControlException {
         Game game1 = new Game();
         ZombieTakeover.setCurrentGame(game1);
         
