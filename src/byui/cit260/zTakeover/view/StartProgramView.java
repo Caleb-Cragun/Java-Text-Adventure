@@ -14,6 +14,11 @@ public class StartProgramView {
         this.displayBanner();
         //Get the player's name
         String playerName = this.getPlayerName();
+        try{
+           Player player = ProgramControl.createPlayer(playerName); 
+        }catch (Throwable me){
+            System.out.println(me.getMessage());
+        }
         //Create gameCharacter
         Player player = ProgramControl.createPlayer(playerName);
         //Display welcome message

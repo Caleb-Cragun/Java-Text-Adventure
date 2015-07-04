@@ -58,7 +58,9 @@ public class InventoryView extends View{
     }
 
     private void weaponsMenu() {
-        System.out.println("***weaponsMenu function called***");
+        WeaponsMenu wMenu = new WeaponsMenu();
+        wMenu.display();
+        
     }
 
     private void consumableMenu() {

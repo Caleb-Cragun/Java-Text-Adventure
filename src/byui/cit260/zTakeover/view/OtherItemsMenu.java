@@ -5,6 +5,8 @@
  */
 package byui.cit260.zTakeover.view;
 
+import byui.cit260.zTakeover.exception.ActionException;
+
 /**
  *
  * @author Onsite
@@ -85,7 +87,15 @@ public class OtherItemsMenu extends View {
 ***********************************************************************************/
     
     private void learnAbility() {
-        System.out.println("***learnAbility function called***");
+        try{
+            learnNewAbility();
+        }catch (Throwable n){
+            System.out.println(n.getMessage());
+        }
     }
-    
+
+    private void learnNewAbility() throws ActionException{
+        throw new ActionException("This function doesn't exist. Please create it.");
+    }
 }
+

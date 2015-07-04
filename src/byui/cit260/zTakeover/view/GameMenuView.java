@@ -7,7 +7,10 @@ package byui.cit260.zTakeover.view;
 
 import byui.cit260.zTakeover.control.CharacterControl;
 import byui.cit260.zTakeover.control.GameControl;
+import byui.cit260.zTakeover.exception.ActionException;
 import byui.cit260.zTakeover.model.Items;
+import byui.cit260.zTakeover.model.Player;
+import zombietakeover.ZombieTakeover;
 
 public class GameMenuView extends View {
         public GameMenuView(){
@@ -105,6 +108,18 @@ public class GameMenuView extends View {
     }
 
     private void saveGame() {
-        System.out.println("***saveGame function called***");
+        try{
+            saveGame(ZombieTakeover.getPlayer());
+        }catch(Throwable err){
+            System.out.println(err.getMessage());
+        }
+    }
+
+    private void saveGame(Player player) throws ActionException{
+        if(player == null){
+            throw new ActionException("Player doesn't exist.");
+        }else{
+            System.out.println("Game Saved");
+        }
     }
 }

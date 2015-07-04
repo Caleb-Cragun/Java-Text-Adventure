@@ -5,39 +5,41 @@
  */
 package byui.cit260.zTakeover.control;
 
+import byui.cit260.zTakeover.exception.ActionException;
+
 public class SceneControl {
-    public double combatSpellDamage(double stepCounter,double numItems,double randomNum){        
+    public double combatSpellDamage(double stepCounter,double numItems,double randomNum) throws ActionException{        
         if(stepCounter<=0){
-            return -1;
+            throw new ActionException("Invalid Stepcounter");
         }else if(numItems<0){
-            return -1;
+            throw new ActionException("Invalid number of items");
         }else if (randomNum<0||randomNum>2){
-            return -1;
+            throw new ActionException("Invalid random number");
         }else{
             double output=stepCounter+Math.pow(numItems,randomNum);
             return output;
         }
     }
     
-    public double brokenShovelDamage(double stepCounter, double numItems, double randomNum){
+    public double brokenShovelDamage(double stepCounter, double numItems, double randomNum)throws ActionException{
         if(stepCounter<=0){
-            return -1;
+            throw new ActionException("Invalid Stepcounter");
         }else if(numItems<0){
-            return -1;
+            throw new ActionException("Invalid number of items");
         }else if (randomNum<0||randomNum>5){
-            return -1;
+            throw new ActionException("Invalid random number");
         }else{
             double output=stepCounter+Math.pow(numItems,randomNum);
             return output;
         }
     }
         
-    public boolean checkSpecialEncounter(double stepCounter, double numItems){
+    public boolean checkSpecialEncounter(double stepCounter, double numItems)throws ActionException{
         if(stepCounter <= 0){
-            return false;
+            throw new ActionException("Invalid Stepcounter");
         }
-        else if(numItems <= 0){
-            return false;
+        else if(numItems < 0){
+            throw new ActionException("Invalid number of items");
         }
         else{
             double chance = Math.sqrt(stepCounter * numItems) % 2;
