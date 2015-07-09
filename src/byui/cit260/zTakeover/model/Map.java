@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package byui.cit260.zTakeover.model;
-import java.io.Serializable;
-import java.util.ArrayList;
+import java.io.*;
+import zombietakeover.ZombieTakeover;
 /**
  *
  * @author Caleb Cragun
@@ -15,12 +15,14 @@ public class Map implements Serializable{
     private int columnCount;
     private Location[][] locations;
 
+    protected final BufferedReader keyboard = ZombieTakeover.getInFile();
+    protected final PrintWriter console = ZombieTakeover.getOutFile();
     public Map() {
     }
 
     public Map(int rows, int columns) {
         if (rows<0||columns<0){
-            System.out.println("Invalid map size.");
+            this.console.println("Invalid map size.");
             return;
         }
         this.rowCount=rows;

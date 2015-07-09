@@ -8,16 +8,19 @@ package byui.cit260.zTakeover.control;
 import byui.cit260.zTakeover.exception.MapControlException;
 import byui.cit260.zTakeover.model.Map;
 import byui.cit260.zTakeover.model.Player;
-import java.util.Scanner;
+import java.io.*;
 import zombietakeover.ZombieTakeover;
 
 public class CharacterControl {
     private final String PROMPT = "Input a direction to go or back to return to the menu:";
+    protected final BufferedReader keyboard = ZombieTakeover.getInFile();
+    protected final PrintWriter console = ZombieTakeover.getOutFile();
+    
     public void moveCharacter(){
        char selection=' ';
        do{
             //Displays the main menu
-            System.out.println(PROMPT);
+            this.console.println(PROMPT);
             
             //Get users input
             String input = this.getInput();
@@ -31,22 +34,24 @@ public class CharacterControl {
     private String getInput() {
         boolean valid = false;
         String userInput = "";
-        //Input stream
-        Scanner input = new Scanner(System.in);
+        try{
+            while(valid!=true){            
         
-        while(valid!=true){            
-            //Get name and trim off blanks
-            userInput = input.nextLine();
-            userInput = userInput.toLowerCase();
-            userInput = userInput.trim();
-            
-            
-            //Checks to see if the name is valid
-            if (userInput.length()==0){
-                System.out.println("Invalid input - try another option");
-            }else{
-                valid=true;
-            }
+                //Get name and trim off blanks
+                userInput = this.keyboard.readLine();
+                userInput = userInput.toLowerCase();
+                userInput = userInput.trim();
+                
+                
+                //Checks to see if the name is valid
+                if (userInput.length()==0){
+                    this.console.println("Invalid input - try another option");
+                }else{
+                    valid=true;
+                }
+            } 
+        }catch (IOException ex) {
+            this.console.println("Error reading input: " + ex.getMessage());
         }
         return userInput;
     }
@@ -62,7 +67,7 @@ public class CharacterControl {
             this.moveWest();
         }else if(selection=='b'){
         }else{
-            System.out.println("***Invalid direction-try again***");
+            this.console.println("***Invalid direction-try again***");
         }
     }
     
@@ -79,18 +84,18 @@ public class CharacterControl {
     }
 
     private void moveNorth() {
-        System.out.println("***moveNorth function called***");
+        this.console.println("***moveNorth function called***");
     }
 
     private void moveEast() {
-        System.out.println("***moveEast function called***");
+        this.console.println("***moveEast function called***");
     }
 
     private void moveSouth() {
-        System.out.println("***moveSouth function called***");
+        this.console.println("***moveSouth function called***");
     }
 
     private void moveWest() {
-        System.out.println("***moveWest function called***");
+        this.console.println("***moveWest function called***");
     }
 }

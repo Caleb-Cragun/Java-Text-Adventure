@@ -46,7 +46,7 @@ public class InventoryView extends View{
             case 'Q':
                 return true;
             default:
-                System.out.println("***Invalid entry, try again.***");
+                this.console.println("***Invalid entry, try again.***");
                 break;
         }
         return false;
@@ -66,14 +66,14 @@ public class InventoryView extends View{
     private void consumableMenu() {
         Items[] consumableSort = ConsumableMenu.getSortedConsumableList();    
             
-        System.out.println("\nList of Consumable Items");
-        System.out.println("Description" + "\t"
+        this.console.println("\nList of Consumable Items");
+        this.console.println("Description" + "\t"
                          + "In Stock");
         
         // for each inventory item
         for (Items consumableItem : consumableSort) {
             // DISPLAY the description, the required amount and amount in stock
-            System.out.println(consumableItem.getDescription() + "\t   "
+            this.console.println(consumableItem.getDescription() + "\t   "
                              + consumableItem.getAmount());
         }
         

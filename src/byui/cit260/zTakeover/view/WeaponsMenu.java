@@ -7,8 +7,6 @@ package byui.cit260.zTakeover.view;
 
 import byui.cit260.zTakeover.exception.ActionException;
 import byui.cit260.zTakeover.model.Weapons;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -41,76 +39,36 @@ public class WeaponsMenu extends View {
         String value=(String)obj;
         value=value.toLowerCase();
         char selection=value.charAt(0);
-        
+        try{
         switch (selection){
             case 's':
-        {
-            try {
                 descShovel();
-            } catch (ActionException ex) {
-               System.out.println(ex.getMessage());
-            }
-        }
                 break;
             case 'f':
-        {
-            try {
                 descFist();
-            } catch (ActionException ex) {
-               System.out.println(ex.getMessage());
-            }
-        }
                 break;
             case 'b':
-        {
-            try {
                 descBat();
-            } catch (ActionException ex) {
-               System.out.println(ex.getMessage());
-            }
-        }
                 break;
             case 'k':
-        {
-            try {
                 descKnu();
-            } catch (ActionException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
                 break;
             case 'g':
-        {
-            try {
                 descGolf();
-            } catch (ActionException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
                 break;
-            case 'l':
-        {
-            try {
-                descBlu();
-            } catch (ActionException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
-                break;
+            case 'l':descBlu();
+                     break;
             case 'c':
-        {
-            try {
                 descKni();
-            } catch (ActionException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
                 break;
             case 'e':
                 return true;
             default:
-                System.out.println("***Invalid entry, try again.***");
+                this.console.println("***Invalid entry, try again.***");
                 break;
+        }
+        } catch (ActionException ex) {
+                this.console.println(ex.getMessage());
         }
         return false;
     }
@@ -119,7 +77,7 @@ public class WeaponsMenu extends View {
         if (Weapons.SHOVEL == null){
             throw new ActionException("Unknown Power");
         }else{
-            System.out.println("Power: " + Weapons.SHOVEL);
+            this.console.println("Power: " + Weapons.SHOVEL);
         }
     }
 
@@ -127,7 +85,7 @@ public class WeaponsMenu extends View {
         if (Weapons.FIST == null){
             throw new ActionException("Unknown Power");
         }else{
-            System.out.println("Power: " + Weapons.FIST);
+            this.console.println("Power: " + Weapons.FIST);
         }
     }
 
@@ -135,7 +93,7 @@ public class WeaponsMenu extends View {
         if (Weapons.BAT == null){
             throw new ActionException("Unknown Power");
         }else{
-            System.out.println("Power: " + Weapons.BAT);
+            this.console.println("Power: " + Weapons.BAT);
         }
     }
 
@@ -143,7 +101,7 @@ public class WeaponsMenu extends View {
         if (Weapons.BRASS_KNUCKLES == null){
             throw new ActionException("Unknown Power");
         }else{
-            System.out.println("Power: " + Weapons.BRASS_KNUCKLES);
+           this.console.println("Power: " + Weapons.BRASS_KNUCKLES);
         }
     }
 
@@ -151,7 +109,7 @@ public class WeaponsMenu extends View {
         if (Weapons.GOLF_CLUB == null){
             throw new ActionException("Unknown Power");
         }else{
-            System.out.println("Power: " + Weapons.GOLF_CLUB);
+            this.console.println("Power: " + Weapons.GOLF_CLUB);
         }
     }
 
@@ -159,7 +117,7 @@ public class WeaponsMenu extends View {
         if (Weapons.BLUDGEON == null){
             throw new ActionException("Unknown Power");
         }else{
-            System.out.println("Power: " + Weapons.BLUDGEON);
+            this.console.println("Power: " + Weapons.BLUDGEON);
         }
     }
 
@@ -167,7 +125,7 @@ public class WeaponsMenu extends View {
         if (Weapons.BOWIE_KNIFE == null){
             throw new ActionException("Unknown Power");
         }else{
-            System.out.println("Power: " + Weapons.BOWIE_KNIFE);
+           this.console.println("Power: " + Weapons.BOWIE_KNIFE);
         }
     }
 }

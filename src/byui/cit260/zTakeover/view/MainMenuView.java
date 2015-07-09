@@ -40,7 +40,7 @@ public class MainMenuView extends View{
             case 'Q':
                 return true;
             default:
-                System.out.println("***Invalid entry, try again.***");
+                this.console.println("***Invalid entry, try again.***");
                 break;
         }
         return false;
@@ -51,7 +51,7 @@ public class MainMenuView extends View{
         try{
             GameControl.createNewGame(ZombieTakeover.getPlayer());
         }catch (MapControlException me){
-            System.out.println(me.getMessage());
+            this.console.println(me.getMessage());
         }
         
         //Display game menu
@@ -60,11 +60,11 @@ public class MainMenuView extends View{
     }
 
     private void loadGame() {
-        System.out.println("*** loadGame function called ***");    
+        this.console.println("*** loadGame function called ***");    
     }
 
     private void saveGame() {
-        System.out.println("*** saveGame function called ***");
+        this.console.println("*** saveGame function called ***");
     }
 
     private void displayHelpMenu() {

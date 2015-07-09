@@ -58,7 +58,7 @@ public class GameMenuView extends View {
             case 'e':
                 return true;
             default:
-                System.out.println("***Invalid entry, try again.***");
+                this.console.println("***Invalid entry, try again.***");
                 break;
         }
         return false;
@@ -67,14 +67,14 @@ public class GameMenuView extends View {
     private void displayInventory() {
         Items[] inventory = GameControl.getSortedInventoryList();
         
-        System.out.println("\nList of Inventory Items");
-        System.out.println("Description" + "\t"
+        this.console.println("\nList of Inventory Items");
+        this.console.println("Description" + "\t"
                          + "In Stock");
         
         // for each inventory item
         for (Items inventoryItem : inventory) {
             // DISPLAY the description, the required amount and amount in stock
-            System.out.println(inventoryItem.getDescription() + "\t   "
+            this.console.println(inventoryItem.getDescription() + "\t   "
                              + inventoryItem.getAmount());
         }
         
@@ -85,7 +85,7 @@ public class GameMenuView extends View {
     }
 
     private void displayFootstepCounter() {
-        System.out.println("***displayFootstepCounter function called***");
+        this.console.println("***displayFootstepCounter function called***");
     }
 
     private void displayAbilities() {
@@ -98,7 +98,7 @@ public class GameMenuView extends View {
     }
 
     private void viewMap() {
-        System.out.println("***viewMap function called***");
+        this.console.println("***viewMap function called***");
     }
 
     private void displayHelpMenu() {
@@ -111,7 +111,7 @@ public class GameMenuView extends View {
         try{
             saveGame(ZombieTakeover.getPlayer());
         }catch(Throwable err){
-            System.out.println(err.getMessage());
+            this.console.println(err.getMessage());
         }
     }
 
@@ -119,7 +119,7 @@ public class GameMenuView extends View {
         if(player == null){
             throw new ActionException("Player doesn't exist.");
         }else{
-            System.out.println("Game Saved");
+            this.console.println("Game Saved");
         }
     }
 }

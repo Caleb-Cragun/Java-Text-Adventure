@@ -64,49 +64,49 @@ public class AbilitiesView extends View{
             case 'Q':
                 return true;
             default:
-                System.out.println("***Invalid entry, try again.***");
+                this.console.println("***Invalid entry, try again.***");
                 break;
         }
         return false;
     }
 
     private void magicDes() {
-        System.out.println("Allows you to cast a variety of spells in combat.");
+        this.console.println("Allows you to cast a variety of spells in combat.");
     }
 
     private void ignitionDes() {
-        System.out.println("You're fireproof. Negates additional fire damage.");
+        this.console.println("You're fireproof. Negates additional fire damage.");
     }
 
     private void physicalDes() {
-        System.out.println("You're unhurtable from physical attacks. Negates physical damage.");
+        this.console.println("You're unhurtable from physical attacks. Negates physical damage.");
    }
 
     private void nightDes() {
-        System.out.println("You can see in the dark like it's noon in the desert.");
+        this.console.println("You can see in the dark like it's noon in the desert.");
     }
 
     private void fastDes() {
-        System.out.println("You're a blur. Gives you +35 speed.");
+        this.console.println("You're a blur. Gives you +35 speed.");
     }
 
     private void alwaysDes() {
-        System.out.println("You always get to attack first in combat.");
+        this.console.println("You always get to attack first in combat.");
     }
 
     private void bearDes() {
-        System.out.println("Vitality of a bear. Gives you +50 hp.");
+        this.console.println("Vitality of a bear. Gives you +50 hp.");
     }
 
     private void cutenessDes() {
-        System.out.println("You're so cute it's almost sickening.");
+        this.console.println("You're so cute it's almost sickening.");
     }
 
     private void saneDes() {
-        System.out.println("You're all there.");
+        this.console.println("You're all there.");
     }
 
     private void knowledgeDes() {
-        System.out.println("You have knowledge on a particular specified subject.");
+        this.console.println("You have knowledge on a particular specified subject.");
     }
 }

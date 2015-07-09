@@ -6,7 +6,6 @@
 package byui.cit260.zTakeover.view;
 
 import byui.cit260.zTakeover.model.Items;
-import java.util.Scanner;
 import zombietakeover.ZombieTakeover;
 
 /**
@@ -71,15 +70,14 @@ public class ConsumableMenu extends View {
         boolean validation = false;
         
         while(validation == false){
-            Scanner input = new Scanner(System.in);
         
-            System.out.println("Enter Quantity: ");
+            this.console.println("Enter Quantity: ");
             String value = this.getInput();
             value = value.trim().toUpperCase();
             try{
                 userQuantity = Double.parseDouble(value);
             }catch (NumberFormatException nf){
-                System.out.println("\nYou must enter a valid number. Try again or enter E to exit.");
+                this.console.println("\nYou must enter a valid number. Try again or enter E to exit.");
             }
         }
     }
@@ -103,7 +101,7 @@ public class ConsumableMenu extends View {
             case 'e':
                 return true;
             default:
-                System.out.println("***Invalid entry, try again.***");
+                this.console.println("***Invalid entry, try again.***");
                 break;
         }
         return false;
@@ -128,6 +126,6 @@ public class ConsumableMenu extends View {
     }
 
     private void addHealth(double quantity) {
-        System.out.println("***addHealth function called " + quantity + " times***");
+        this.console.println("***addHealth function called " + quantity + " times***");
     }
 }

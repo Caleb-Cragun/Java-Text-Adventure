@@ -5,10 +5,16 @@
  */
 package byui.cit260.zTakeover.view;
 
-import java.util.Scanner;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import zombietakeover.ZombieTakeover;
 
 public abstract class View implements ViewInterface{
     private String promptMessage;
+    
+    protected final BufferedReader keyboard = ZombieTakeover.getInFile();
+    protected final PrintWriter console = ZombieTakeover.getOutFile();
     
     public View(String promptMessage){
         this.promptMessage=promptMessage;
@@ -19,7 +25,7 @@ public abstract class View implements ViewInterface{
         String value = "";
         boolean done = false;
         do{
-            System.out.println(this.promptMessage);
+            this.console.println(this.promptMessage);
             value=this.getInput();
             done=this.doAction(value);
         }while (!done);
@@ -27,18 +33,21 @@ public abstract class View implements ViewInterface{
     
     @Override
     public String getInput(){
-        Scanner keyboard=new Scanner(System.in);
         boolean valid=false;
         String value=null;
-        
-        while(!valid){
-            value=keyboard.nextLine();
-            value=value.trim();
-            if (value.length()<1){
-                System.out.println("You must enter a value.");
-                continue;
-            }
-            break;
+        try {
+            while(!valid){
+            
+                value=this.keyboard.readLine();
+                value=value.trim();
+                if (value.length()<1){
+                    this.console.println("You must enter a value.");
+                    continue;
+                }
+                break;
+            }   
+        }catch (IOException ex) {
+                this.console.println("Error reading input: " + ex.getMessage());
         }
         return value;
     }

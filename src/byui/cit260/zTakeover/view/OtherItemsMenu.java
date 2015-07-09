@@ -76,7 +76,7 @@ public class OtherItemsMenu extends View {
             case 'q':
                 return true;
             default:
-                System.out.println("***Invalid entry, try again.***");
+                this.console.println("***Invalid entry, try again.***");
                 break;
         }
         return false;
@@ -90,7 +90,7 @@ public class OtherItemsMenu extends View {
         try{
             learnNewAbility();
         }catch (Throwable n){
-            System.out.println(n.getMessage());
+            this.console.println(n.getMessage());
         }
     }
 

@@ -1,19 +1,10 @@
 package zombietakeover;
 
-import byui.cit260.zTakeover.model.Game;
-import byui.cit260.zTakeover.model.Scene;
-import byui.cit260.zTakeover.model.Map;
-import byui.cit260.zTakeover.model.Ability;
-import byui.cit260.zTakeover.model.Food;
-import byui.cit260.zTakeover.model.FoundObjects;
-import byui.cit260.zTakeover.model.GameCharacter;
-import byui.cit260.zTakeover.model.Items;
-import byui.cit260.zTakeover.model.Location;
-import byui.cit260.zTakeover.model.Player;
-import byui.cit260.zTakeover.model.Weapons;
-import byui.cit260.zTakeover.view.StartProgramView;
-import java.util.HashSet;
-import java.util.Set;
+import byui.cit260.zTakeover.model.*;
+import byui.cit260.zTakeover.view.*;
+import com.sun.istack.internal.logging.Logger;
+import java.io.*;
+import java.util.*;
 /**
  *
  * @author Caleb Cragun and Nathan Grow
@@ -21,6 +12,11 @@ import java.util.Set;
 public class ZombieTakeover {
     private static Game currentGame=null;
     private static Player player=null;
+    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    
+    private static PrintWriter logFile = null;
 
     public static Game getCurrentGame() {
         return currentGame;
@@ -37,19 +33,65 @@ public class ZombieTakeover {
     public static void setPlayer(Player player) {
         ZombieTakeover.player = player;
     }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        ZombieTakeover.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        ZombieTakeover.inFile = inFile;
+    }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        ZombieTakeover.logFile = logFile;
+    }
     
+        
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        StartProgramView startProgramView = new StartProgramView();
+        
         try{
+            ZombieTakeover.inFile = new BufferedReader(new InputStreamReader(System.in));
+            ZombieTakeover.outFile = new PrintWriter(System.out , true);
+            
+            //Open log file
+            String filePath = "C:\\Users\\The King's Wit\\Desktop\\ZTakeover_log.txt";
+            ZombieTakeover.logFile = new PrintWriter(filePath);
+            
+            StartProgramView startProgramView = new StartProgramView();
             startProgramView.startProgram();
+            return;
         }catch(Throwable te){
-            System.out.println(te.getMessage());
+            System.out.println("Exception: "+te.toString()+
+                               "\nCause: " + te.getCause()+
+                               "\nMessage: " +te.getMessage());
             te.printStackTrace();
-            startProgramView.startProgram();
+        }finally{
+            try{
+                if(ZombieTakeover.inFile != null)
+                    ZombieTakeover.inFile.close();
+                if(ZombieTakeover.outFile != null)
+                    ZombieTakeover.outFile.close();
+                if(ZombieTakeover.logFile != null)
+                    ZombieTakeover.logFile.close();
+            }catch (IOException ex){
+                System.out.println("Error closing files");
+                return;
+            }
         }
     }
-    
 }
