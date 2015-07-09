@@ -5,12 +5,14 @@
  */
 package byui.cit260.zTakeover.control;
 
+import byui.cit260.zTakeover.exception.ActionException;
 import byui.cit260.zTakeover.exception.MapControlException;
 import byui.cit260.zTakeover.model.Ability;
 import byui.cit260.zTakeover.model.Game;
 import byui.cit260.zTakeover.model.Items;
 import byui.cit260.zTakeover.model.Map;
 import byui.cit260.zTakeover.model.Player;
+import java.io.*;
 import zombietakeover.ZombieTakeover;
 
 public class GameControl {
@@ -163,5 +165,27 @@ public class GameControl {
             System.out.println(a);
         }
         return null;
+    }
+
+    public static void saveGame(Game currentGame, String filePath) 
+            throws ActionException{
+        try(FileOutputStream fops = new FileOutputStream(filePath)){
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            output.writeObject(currentGame);
+        }catch(IOException e){
+            throw new ActionException(e.getMessage());
+        }
+    }
+
+    public static void loadGame(String filePath) throws ActionException{
+        Game game = null;
+        try(FileInputStream fips = new FileInputStream(filePath)){
+            ObjectInputStream input = new ObjectInputStream(fips);
+            game = (Game) input.readObject();
+        }catch(FileNotFoundException fnfe){
+            throw new ActionException(fnfe.getMessage());
+        }catch(Exception e){
+            throw new ActionException(e.getMessage());
+        }
     }
 }

@@ -60,11 +60,27 @@ public class MainMenuView extends View{
     }
 
     private void loadGame() {
-        this.console.println("*** loadGame function called ***");    
+        this.console.println("\n\nEnter the file path for file where the game is saved:");
+        String filePath = this.getInput();
+        try{
+            GameControl.loadGame(filePath);
+        }catch(Exception e){
+            ErrorView.display("MainMenuView", e.getMessage());
+        }
+        //Display game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
     private void saveGame() {
-        this.console.println("*** saveGame function called ***");
+        this.console.println("\n\nEnter the filepath for where to save the game:");
+        String filePath = this.getInput();
+        
+        try{
+            GameControl.saveGame(ZombieTakeover.getCurrentGame(),filePath);
+        }catch(Exception ex){
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
     }
 
     private void displayHelpMenu() {

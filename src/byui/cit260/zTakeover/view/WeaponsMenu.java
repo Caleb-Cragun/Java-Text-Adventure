@@ -56,19 +56,20 @@ public class WeaponsMenu extends View {
             case 'g':
                 descGolf();
                 break;
-            case 'l':descBlu();
-                     break;
+            case 'l':
+                descBlu();
+                break;
             case 'c':
                 descKni();
                 break;
             case 'e':
                 return true;
             default:
-                this.console.println("***Invalid entry, try again.***");
+                ErrorView.display(this.getClass().getName(),"You must enter a valid value.");
                 break;
         }
         } catch (ActionException ex) {
-                this.console.println(ex.getMessage());
+                ErrorView.display(this.getClass().getName(),"Error reading input: " + ex.getMessage());
         }
         return false;
     }
