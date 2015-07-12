@@ -2,9 +2,7 @@ package zombietakeover;
 
 import byui.cit260.zTakeover.model.*;
 import byui.cit260.zTakeover.view.*;
-import com.sun.istack.internal.logging.Logger;
 import java.io.*;
-import java.util.*;
 /**
  *
  * @author Caleb Cragun and Nathan Grow
@@ -69,7 +67,7 @@ public class ZombieTakeover {
             ZombieTakeover.outFile = new PrintWriter(System.out , true);
             
             //Open log file
-            String filePath = "C:\\Users\\The King's Wit\\Desktop\\ZTakeover_log.txt";
+            String filePath = "ZTakeover_log.txt";
             ZombieTakeover.logFile = new PrintWriter(filePath);
             
             StartProgramView startProgramView = new StartProgramView();

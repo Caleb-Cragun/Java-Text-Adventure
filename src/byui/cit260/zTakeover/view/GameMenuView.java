@@ -7,9 +7,9 @@ package byui.cit260.zTakeover.view;
 
 import byui.cit260.zTakeover.control.CharacterControl;
 import byui.cit260.zTakeover.control.GameControl;
-import byui.cit260.zTakeover.exception.ActionException;
+import byui.cit260.zTakeover.control.MapControl;
 import byui.cit260.zTakeover.model.Items;
-import byui.cit260.zTakeover.model.Player;
+import byui.cit260.zTakeover.model.Location;
 import zombietakeover.ZombieTakeover;
 
 public class GameMenuView extends View {
@@ -25,6 +25,7 @@ public class GameMenuView extends View {
             +"\nV-View Map"
             +"\nH-Help Menu"
             +"\nS-Save Game"
+            +"\nP-Print Map"
             +"\nE-Exit Game"
             +"\n------------------------");
         }
@@ -54,6 +55,9 @@ public class GameMenuView extends View {
                 break;
             case 's':
                 this.saveGame();
+                break;
+            case 'p':
+                this.printMap();
                 break;
             case 'e':
                 return true;
@@ -98,7 +102,23 @@ public class GameMenuView extends View {
     }
 
     private void viewMap() {
-        this.console.println("***viewMap function called***");
+        Location[][] locations = ZombieTakeover.getCurrentGame().getMap().getLocations();
+
+        System.out.println("\n***** Urban Crawl ******");
+        System.out.println(" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | ");
+
+        for (int i = 0; i < locations[0].length; i++) {
+            System.out.println("\n----------------------------------");
+            System.out.format("%2d", i);
+            for (int j = 0; j < locations[0].length; j++) {
+                System.out.print(" | ");
+                System.out.print(locations[i][j].getScene());
+
+            }
+            System.out.print(" | ");
+        }
+        System.out.println("\n----------------------------------");
+    
     }
 
     private void displayHelpMenu() {
@@ -114,7 +134,15 @@ public class GameMenuView extends View {
         try{
             GameControl.saveGame(ZombieTakeover.getCurrentGame(),filePath);
         }catch(Exception ex){
-            ErrorView.display("MainMenuView", ex.getMessage());
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+    }
+
+    private void printMap() {
+        try{
+        MapControl.printMap();
+        }catch(Exception ex){
+            ErrorView.display("GameMenuView", ex.getMessage());
         }
     }
 }

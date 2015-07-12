@@ -94,8 +94,8 @@ public class OtherItemsMenu extends View {
         }
     }
 
-    private void learnNewAbility() throws ActionException{
-        throw new ActionException("This function doesn't exist. Please create it.");
+    private void learnNewAbility(){
+        this.console.println("*** learnAbility function called ***");
     }
 }
 

@@ -6,8 +6,6 @@
 package byui.cit260.zTakeover.view;
 
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import zombietakeover.ZombieTakeover;
 
 public abstract class View implements ViewInterface{

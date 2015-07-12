@@ -5,60 +5,57 @@
  */
 package byui.cit260.zTakeover.control;
 
-import byui.cit260.zTakeover.exception.MapControlException;
-import byui.cit260.zTakeover.model.Game;
-import byui.cit260.zTakeover.model.GameCharacter;
-import byui.cit260.zTakeover.model.Location;
-import byui.cit260.zTakeover.model.Map;
-import byui.cit260.zTakeover.model.Player;
-import byui.cit260.zTakeover.model.Scene;
+import byui.cit260.zTakeover.exception.*;
+import byui.cit260.zTakeover.model.*;
+import java.io.*;
 import zombietakeover.ZombieTakeover;
 
 /**
  *
  * @author The King's Wit
  */
-public class MapControl{
-    public static Map createMap(){
-        Map map = new Map(20,20);
+public class MapControl {
+
+    public static Map createMap() {
+        Map map = new Map(10, 10);
         Scene[] scenes = createScenes();
-        assignScenesToLocations(map,scenes);
-        
+        assignScenesToLocations(map, scenes);
+
         return map;
     }
 
-    private static Scene[] createScenes(){
+    private static Scene[] createScenes() {
         Game game = ZombieTakeover.getCurrentGame();
         Scene[] scenes = new Scene[SceneType.values().length];
         Scene startingScene = new Scene();
         startingScene.setDescription(
                 "\nYou come to in the dark. You find it very difficult to move, "
-                +"but still managable. You pick at the cover above you and then "
-                +"some dirt falls onto you. Your clawing brings more dirt down "
-                +"on top of you, but your persistance pays off. Suddenly your "
-                +"clawing brings you to the surface and you look around. Your "
-                +"tombstone stits behind you and you find yourself in the dirty, "
-                +"deserted alley you once new. All is silent, save the blowing "
+                + "but still managable. You pick at the cover above you and then "
+                + "some dirt falls onto you. Your clawing brings more dirt down "
+                + "on top of you, but your persistance pays off. Suddenly your "
+                + "clawing brings you to the surface and you look around. Your "
+                + "tombstone stits behind you and you find yourself in the dirty, "
+                + "deserted alley you once new. All is silent, save the blowing "
                 + "of the wind.");
-        scenes[SceneType.start.ordinal()]=startingScene;
-        
-        Scene endingScene=new Scene();
+        scenes[SceneType.start.ordinal()] = startingScene;
+
+        Scene endingScene = new Scene();
         endingScene.setDescription(
                 "You stare at the fallen hasmat team, their eyes wide with fright "
-                +"but lifeless as you stand over them. You wonder what drew you "
-                +"to fight them. You come to an aweful realization as you look up "
-                +"at the hospital. You collapse, crying as you realize that your "
-                +"hope at a second chance at life now lays dead at your feet. "
-                +"You look up at the faces of those who are still remaining in "
-                +"the hospital. Horror and awe are indistinct between them all. "
-                +"You shamble off into the distnce, never to be seen again."
-                +"The end. Thanks for playing.");
+                + "but lifeless as you stand over them. You wonder what drew you "
+                + "to fight them. You come to an aweful realization as you look up "
+                + "at the hospital. You collapse, crying as you realize that your "
+                + "hope at a second chance at life now lays dead at your feet. "
+                + "You look up at the faces of those who are still remaining in "
+                + "the hospital. Horror and awe are indistinct between them all. "
+                + "You shamble off into the distnce, never to be seen again."
+                + "The end. Thanks for playing.");
+        scenes[SceneType.ending.ordinal()] = endingScene;
         return scenes;
     }
-    
-    private static void assignScenesToLocations(Map map, Scene[] scenes) {
-        Location[][] locations=map.getLocations();
 
+    private static void assignScenesToLocations(Map map, Scene[] scenes) {
+        Location[][] locations = map.getLocations();
 
         //start point
         locations[0][0].setScene(scenes[SceneType.start.ordinal()]);
@@ -163,35 +160,55 @@ public class MapControl{
         locations[9][9].setScene(scenes[SceneType.ending.ordinal()]);
     }
 
-    static void startAtLocation(Map map,Scene[] scenes) {
-        Location[][] locations=map.getLocations();
-        
+    static void startAtLocation(Map map, Scene[] scenes) {
+        Location[][] locations = map.getLocations();
+
         //start point
         locations[0][0].setScene(scenes[SceneType.start.ordinal()]);
-      
+
     }
 
-    public static void startAtLocation(Map map) throws MapControlException{
+    public static void startAtLocation(Map map) throws MapControlException {
         Player player1 = ZombieTakeover.getPlayer();
         int row = map.getRowCount();
         int column = map.getColumnCount();
         CharacterControl.moveCharacterToLocation(player1, row, column);
     }
     
-    public enum SceneType{
-            start,
-            deserted_street,
-            sport_store,
-            donut_shop,
-            alley,
-            toy_store,
-            magic_store,
-            fire_house,
-            pet_store,
-            book_store,
-            fur_shop,
-            hospital,
-            trap,
-            ending;
+    public static void printMap() 
+            throws ActionException{
+        try(FileOutputStream fops = new FileOutputStream("C:\\map.txt")){
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            output.writeObject(ZombieTakeover.getCurrentGame().getMap());
+        }catch(IOException e){
+            throw new ActionException(e.getMessage());
         }
+    }
+
+    public enum SceneType {
+
+        start("ST"),
+        deserted_street("DS"),
+        sport_store("SS"),
+        donut_shop("DS"),
+        alley("AL"),
+        toy_store("TS"),
+        magic_store("MS"),
+        fire_house("FH"),
+        pet_store("PS"),
+        book_store("BS"),
+        fur_shop("FS"),
+        hospital("HO"),
+        trap("TR"),
+        ending("EN");
+        private String symbol;
+    
+        SceneType(String symbol) {
+        this.symbol=symbol;
+        }
+    
+        public String getSymbol(){
+        return symbol;
+        }
+    }  
 }

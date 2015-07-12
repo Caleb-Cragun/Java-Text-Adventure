@@ -5,7 +5,6 @@
  */
 package byui.cit260.zTakeover.model;
 import java.io.Serializable;
-import java.util.ArrayList;
 /**
  *
  * @author Caleb Cragun and Nathan Grow

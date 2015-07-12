@@ -7,8 +7,6 @@ package byui.cit260.zTakeover.view;
 import byui.cit260.zTakeover.control.ProgramControl;
 import byui.cit260.zTakeover.model.Player;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import zombietakeover.ZombieTakeover;
 
 public class StartProgramView {
