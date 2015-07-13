@@ -1,7 +1,9 @@
 package byui.cit260.zTakeover.view;
 
-import byui.cit260.zTakeover.control.GameControl;
+import byui.cit260.zTakeover.control.*;
 import byui.cit260.zTakeover.exception.MapControlException;
+import byui.cit260.zTakeover.model.Player;
+import java.io.*;
 import zombietakeover.ZombieTakeover;
 
 public class MainMenuView extends View{
@@ -47,7 +49,16 @@ public class MainMenuView extends View{
     }
 
     private void startNewGame() {
-        //start a new game
+        String playerName = this.getPlayerName();
+        try{
+           Player player = ProgramControl.createPlayer(playerName); 
+        }catch (Throwable me){
+            this.console.println(me.getMessage());
+        }
+        //Create gameCharacter
+        Player player = ProgramControl.createPlayer(playerName);
+        //Display welcome message
+        this.displayWelcomeMessage(player);
         try{
             GameControl.createNewGame(ZombieTakeover.getPlayer());
         }catch (MapControlException me){
@@ -88,5 +99,41 @@ public class MainMenuView extends View{
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
+    
+    private void displayWelcomeMessage(Player player) {
+        this.console.println("\n\n==========================================");
+        this.console.println("\tWelcome to the game "+ player.getName());
+        this.console.println("\tWe hope you have fun.");
+        this.console.println("==========================================");
+    }
+    
+    public String getPlayerName() {
+        //Indicates if a name has been retrieved
+        boolean valid = false;
+        String playerName = "";
+        
+        try {
+        while(valid==false){
+            
+                //Prompt user for name
+                this.console.println("Enter player name below:");
+                
+                //Get name and trim off blanks
+                playerName = this.keyboard.readLine();
+                
+                
+                //Checks to see if the name is valid
+                if (playerName.length()<2){
+                    this.console.println("Invalid name - name must not be blank");
+                }else{
+                    valid=true;
+                }
+            } 
+        }catch (IOException ex) {
+                this.console.println("Error reading input: " + ex.getMessage());
+        }
+        return playerName;
+    }
+
     
 }

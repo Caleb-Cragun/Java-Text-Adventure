@@ -112,7 +112,7 @@ public class GameMenuView extends View {
             System.out.format("%2d", i);
             for (int j = 0; j < locations[0].length; j++) {
                 System.out.print(" | ");
-                System.out.print(locations[i][j].getScene());
+                System.out.print(locations[i][j].getScene().getSymbol());
 
             }
             System.out.print(" | ");

@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package byui.cit260.zTakeover.view;
-import byui.cit260.zTakeover.control.ProgramControl;
-import byui.cit260.zTakeover.model.Player;
 import java.io.*;
 import zombietakeover.ZombieTakeover;
 
@@ -13,17 +11,6 @@ public class StartProgramView {
     public void startProgram(){
         //Displays the banner screen
         this.displayBanner();
-        //Get the player's name
-        String playerName = this.getPlayerName();
-        try{
-           Player player = ProgramControl.createPlayer(playerName); 
-        }catch (Throwable me){
-            this.console.println(me.getMessage());
-        }
-        //Create gameCharacter
-        Player player = ProgramControl.createPlayer(playerName);
-        //Display welcome message
-        this.displayWelcomeMessage(player);
         //Display the MainMenu
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.display();
@@ -52,39 +39,5 @@ public class StartProgramView {
 
     protected final BufferedReader keyboard = ZombieTakeover.getInFile();
     protected final PrintWriter console = ZombieTakeover.getOutFile();
-    
-    public String getPlayerName() {
-        //Indicates if a name has been retrieved
-        boolean valid = false;
-        String playerName = "";
         
-        try {
-        while(valid==false){
-            
-                //Prompt user for name
-                this.console.println("Enter player name below:");
-                
-                //Get name and trim off blanks
-                playerName = this.keyboard.readLine();
-                
-                
-                //Checks to see if the name is valid
-                if (playerName.length()<2){
-                    this.console.println("Invalid name - name must not be blank");
-                }else{
-                    valid=true;
-                }
-            } 
-        }catch (IOException ex) {
-                this.console.println("Error reading input: " + ex.getMessage());
-        }
-        return playerName;
-    }
-
-    private void displayWelcomeMessage(Player player) {
-        this.console.println("\n\n==========================================");
-        this.console.println("\tWelcome to the game "+ player.getName());
-        this.console.println("\tWe hope you have fun.");
-        this.console.println("==========================================");
-    }
 }
