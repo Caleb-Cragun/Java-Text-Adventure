@@ -78,7 +78,7 @@ public class WeaponsMenu extends View {
         if (Weapons.SHOVEL == null){
             throw new ActionException("Unknown Power");
         }else{
-            this.console.println("Power: " + Weapons.SHOVEL);
+            this.console.println("Power: " + Weapons.SHOVEL.getPower());
         }
     }
 
@@ -86,7 +86,7 @@ public class WeaponsMenu extends View {
         if (Weapons.FIST == null){
             throw new ActionException("Unknown Power");
         }else{
-            this.console.println("Power: " + Weapons.FIST);
+            this.console.println("Power: " + Weapons.FIST.getPower());
         }
     }
 
@@ -94,7 +94,7 @@ public class WeaponsMenu extends View {
         if (Weapons.BAT == null){
             throw new ActionException("Unknown Power");
         }else{
-            this.console.println("Power: " + Weapons.BAT);
+            this.console.println("Power: " + Weapons.BAT.getPower());
         }
     }
 
@@ -102,7 +102,7 @@ public class WeaponsMenu extends View {
         if (Weapons.BRASS_KNUCKLES == null){
             throw new ActionException("Unknown Power");
         }else{
-           this.console.println("Power: " + Weapons.BRASS_KNUCKLES);
+           this.console.println("Power: " + Weapons.BRASS_KNUCKLES.getPower());
         }
     }
 
@@ -110,7 +110,7 @@ public class WeaponsMenu extends View {
         if (Weapons.GOLF_CLUB == null){
             throw new ActionException("Unknown Power");
         }else{
-            this.console.println("Power: " + Weapons.GOLF_CLUB);
+            this.console.println("Power: " + Weapons.GOLF_CLUB.getPower());
         }
     }
 
@@ -118,7 +118,7 @@ public class WeaponsMenu extends View {
         if (Weapons.BLUDGEON == null){
             throw new ActionException("Unknown Power");
         }else{
-            this.console.println("Power: " + Weapons.BLUDGEON);
+            this.console.println("Power: " + Weapons.BLUDGEON.getPower());
         }
     }
 
@@ -126,7 +126,7 @@ public class WeaponsMenu extends View {
         if (Weapons.BOWIE_KNIFE == null){
             throw new ActionException("Unknown Power");
         }else{
-           this.console.println("Power: " + Weapons.BOWIE_KNIFE);
+           this.console.println("Power: " + Weapons.BOWIE_KNIFE.getPower());
         }
     }
 }

@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Onsite
  */
 public enum Weapons implements Serializable{
-    SHOVEL(15.0),
+    SHOVEL(0.0),
     FIST(5.0),
     BAT(7.0),
     BRASS_KNUCKLES(6.0),

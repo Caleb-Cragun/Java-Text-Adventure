@@ -105,10 +105,10 @@ public class GameMenuView extends View {
         Location[][] locations = ZombieTakeover.getCurrentGame().getMap().getLocations();
 
         System.out.println("\n***** Urban Crawl ******");
-        System.out.println(" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | ");
+        System.out.println("   | 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | ");
 
         for (int i = 0; i < locations[0].length; i++) {
-            System.out.println("\n----------------------------------");
+            System.out.println("\n------------------------------------------------------");
             System.out.format("%2d", i);
             for (int j = 0; j < locations[0].length; j++) {
                 System.out.print(" | ");
@@ -117,7 +117,7 @@ public class GameMenuView extends View {
             }
             System.out.print(" | ");
         }
-        System.out.println("\n----------------------------------");
+        System.out.println("\n------------------------------------------------------");
     
     }
 
