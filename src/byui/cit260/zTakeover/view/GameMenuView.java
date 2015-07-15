@@ -8,8 +8,11 @@ package byui.cit260.zTakeover.view;
 import byui.cit260.zTakeover.control.CharacterControl;
 import byui.cit260.zTakeover.control.GameControl;
 import byui.cit260.zTakeover.control.MapControl;
+import byui.cit260.zTakeover.exception.MapControlException;
 import byui.cit260.zTakeover.model.Items;
 import byui.cit260.zTakeover.model.Location;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import zombietakeover.ZombieTakeover;
 
 public class GameMenuView extends View {
@@ -98,7 +101,11 @@ public class GameMenuView extends View {
 
     private void moveCharacter() {
         CharacterControl character = new CharacterControl();
-        character.moveCharacter();
+            try {
+                character.moveCharacter();
+            } catch (MapControlException ex) {
+                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     private void viewMap() {

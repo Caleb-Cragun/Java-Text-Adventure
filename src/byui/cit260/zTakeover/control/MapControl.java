@@ -130,10 +130,10 @@ public class MapControl {
     }
 
     public static void startAtLocation(Map map) throws MapControlException {
-        Player player1 = ZombieTakeover.getPlayer();
-        int row = map.getRowCount();
-        int column = map.getColumnCount();
-        CharacterControl.moveCharacterToLocation(player1, row, column);
+        Player player = ZombieTakeover.getPlayer();
+        int row = 0;
+        int column = 0;
+        CharacterControl.moveCharacterToStart(player, row, column);
     }
     
     public static void printMap() 

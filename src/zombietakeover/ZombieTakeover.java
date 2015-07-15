@@ -10,7 +10,8 @@ import java.io.*;
 public class ZombieTakeover {
     private static Game currentGame=null;
     private static Player player=null;
-    
+    private static Location currentLocation = null;
+
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
     
@@ -31,6 +32,15 @@ public class ZombieTakeover {
     public static void setPlayer(Player player) {
         ZombieTakeover.player = player;
     }
+    
+    public static Location getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public static void setCurrentLocation(Location currentLocation) {
+        ZombieTakeover.currentLocation = currentLocation;
+    }
+    
 
     public static PrintWriter getOutFile() {
         return outFile;
