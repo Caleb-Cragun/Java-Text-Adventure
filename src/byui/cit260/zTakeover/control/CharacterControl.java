@@ -6,6 +6,7 @@
 package byui.cit260.zTakeover.control;
 
 import byui.cit260.zTakeover.exception.MapControlException;
+import byui.cit260.zTakeover.model.Location;
 import byui.cit260.zTakeover.model.Map;
 import byui.cit260.zTakeover.model.Player;
 import java.io.*;
@@ -16,7 +17,7 @@ public class CharacterControl {
     protected final BufferedReader keyboard = ZombieTakeover.getInFile();
     protected final PrintWriter console = ZombieTakeover.getOutFile();
     
-    public void moveCharacter(){
+    public void moveCharacter() throws MapControlException{
        char selection=' ';
        do{
             //Displays the main menu
@@ -56,7 +57,7 @@ public class CharacterControl {
         return userInput;
     }
 
-    private void doAction(char selection) {
+    private void doAction(char selection) throws MapControlException {
         if(selection=='n'){
             this.moveNorth();
         }else if(selection=='e'){
@@ -71,31 +72,84 @@ public class CharacterControl {
         }
     }
     
-    public static void moveCharacterToLocation(Player player, int row, int column)
-        throws MapControlException{
+    public static void moveCharacterToStart(Player player, int row, int column) throws MapControlException{
         Map map = ZombieTakeover.getCurrentGame().getMap();
-        int newRow = row - 1;
-        int newColumn = column - 1;
+        Location location = ZombieTakeover.getCurrentLocation();
         
-        if (newRow < 0 || newRow >= map.getRowCount() || newColumn < 0 || newColumn >= map.getColumnCount()){
+        int startRow = row;
+        int startColumn = column;
+        
+        if (startRow < 0 || startRow >= map.getRowCount() || startColumn < 0 || startColumn >= map.getColumnCount()){
             throw new MapControlException("Cannot move to " + row + "," + column +
                                           "because that location is out of the map boundaries.");
         }
+        else{
+            Location startLocation = new Location();
+            startLocation.setX(row);
+            startLocation.setY(column);
+            
+            ZombieTakeover.setCurrentLocation(startLocation);
+            
+        }
+    }
+    
+    public static void moveCharacterToLocation(Player player, int row, int column) throws MapControlException{
+        Map map = ZombieTakeover.getCurrentGame().getMap();
+        Location location = ZombieTakeover.getCurrentLocation();
+        
+        int currentRow = ZombieTakeover.getCurrentLocation().getX();
+        int currentColumn = ZombieTakeover.getCurrentLocation().getY();
+        
+        int newRow = row + currentRow;
+        int newColumn = column + currentColumn;
+        
+        if (newRow < 0 || newRow >= map.getRowCount() || newColumn < 0 || newColumn >= map.getColumnCount()){
+            throw new MapControlException("Cannot move to " + (currentRow + row) + "," + (currentColumn + column) +
+                                          "because that location is out of the map boundaries.");
+        }
+        else if (row == 1){
+            Location newLocation = new Location();
+            location.setX(newRow);
+            
+            ZombieTakeover.setCurrentLocation(location);
+        }
+        else if (row == -1){
+            Location newLocation = new Location();
+            location.setX(newRow);
+            
+            ZombieTakeover.setCurrentLocation(location);
+        }
+        else if (column == 1){
+            Location newLocation = new Location();
+            location.setY(newColumn);
+            
+            ZombieTakeover.setCurrentLocation(location);
+        }
+        else{
+            Location newLocation = new Location();
+            location.setY(newColumn);
+            
+            ZombieTakeover.setCurrentLocation(location);
+        }
     }
 
-    private void moveNorth() {
-        this.console.println("***moveNorth function called***");
+    private void moveNorth() throws MapControlException {
+        Player player = ZombieTakeover.getPlayer();
+        moveCharacterToLocation(player, -1, 0);
     }
 
-    private void moveEast() {
-        this.console.println("***moveEast function called***");
+    private void moveEast() throws MapControlException {
+        Player player = ZombieTakeover.getPlayer();
+        moveCharacterToLocation(player, 0, 1);
     }
 
-    private void moveSouth() {
-        this.console.println("***moveSouth function called***");
+    private void moveSouth() throws MapControlException {
+        Player player = ZombieTakeover.getPlayer();
+        moveCharacterToLocation(player, 1, 0);
     }
 
-    private void moveWest() {
-        this.console.println("***moveWest function called***");
+    private void moveWest() throws MapControlException {
+        Player player = ZombieTakeover.getPlayer();
+        moveCharacterToLocation(player, 0, -1);
     }
 }
