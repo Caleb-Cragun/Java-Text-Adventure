@@ -1,9 +1,12 @@
 package byui.cit260.zTakeover.view;
 
 import byui.cit260.zTakeover.control.*;
+import byui.cit260.zTakeover.exception.ActionException;
 import byui.cit260.zTakeover.exception.MapControlException;
 import byui.cit260.zTakeover.model.Player;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import zombietakeover.ZombieTakeover;
 
 public class MainMenuView extends View{
@@ -27,7 +30,13 @@ public class MainMenuView extends View{
         char selection=value.charAt(0);
         switch (selection){
             case 'N':
+        {
+            try {
                 this.startNewGame();
+            } catch (ActionException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case 'L':
                 this.loadGame();
@@ -48,7 +57,7 @@ public class MainMenuView extends View{
         return false;
     }
 
-    private void startNewGame() {
+    private void startNewGame() throws ActionException {
         String playerName = this.getPlayerName();
         try{
            Player player = ProgramControl.createPlayer(playerName); 
@@ -71,24 +80,25 @@ public class MainMenuView extends View{
     }
 
     private void loadGame() {
-        this.console.println("\n\nEnter the file path for file where the game is saved:");
-        String filePath = this.getInput();
+        this.console.println("\n\nEnter the file name of the save file:");
+        String filePath = this.getInput() + ".txt";
         try{
             GameControl.loadGame(filePath);
         }catch(Exception e){
             ErrorView.display("MainMenuView", e.getMessage());
         }
+        this.console.println("Game loaded.\n");
         //Display game menu
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
     }
 
     private void saveGame() {
-        this.console.println("\n\nEnter the filepath for where to save the game:");
-        String filePath = this.getInput();
+        this.console.println("\n\nEnter the filename for where to save the game:");
+        String fileName = this.getInput() + ".txt";
         
         try{
-            GameControl.saveGame(ZombieTakeover.getCurrentGame(),filePath);
+            GameControl.saveGame(ZombieTakeover.getCurrentGame(),fileName);
         }catch(Exception ex){
             ErrorView.display("MainMenuView", ex.getMessage());
         }

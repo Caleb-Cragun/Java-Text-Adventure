@@ -5,6 +5,7 @@
  */
 package byui.cit260.zTakeover.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
  *
  * @author Onsite
  */
-public class GameCharacter {
+public class GameCharacter implements Serializable{
     private ArrayList<Items> item=new ArrayList<>();
     private ArrayList<Ability> abil=new ArrayList<>();
     private Player player1;

@@ -128,13 +128,13 @@ public class GameMenuView extends View {
     }
 
     private void saveGame() {
-        this.console.println("\n\nEnter the filepath for where to save the game:");
-        String filePath = this.getInput();
+        this.console.println("\n\nEnter the filename for where to save the game:");
+        String fileName = this.getInput() + ".txt";
         
         try{
-            GameControl.saveGame(ZombieTakeover.getCurrentGame(),filePath);
+            GameControl.saveGame(ZombieTakeover.getCurrentGame(),fileName);
         }catch(Exception ex){
-            ErrorView.display("GameMenuView", ex.getMessage());
+            ErrorView.display("MainMenuView", ex.getMessage());
         }
     }
 

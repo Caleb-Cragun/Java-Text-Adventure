@@ -12,7 +12,7 @@ import zombietakeover.ZombieTakeover;
 
 public class GameControl {
 
-    public static void createNewGame(Player player) throws MapControlException {
+    public static void createNewGame(Player player) throws MapControlException, ActionException {
         Game game1 = new Game();
         ZombieTakeover.setCurrentGame(game1);
         

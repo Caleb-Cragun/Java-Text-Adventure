@@ -16,7 +16,7 @@ import zombietakeover.ZombieTakeover;
  */
 public class MapControl {
 
-    public static Map createMap() {
+    public static Map createMap() throws ActionException {
         Map map = new Map(10, 10);
         assignScenesToLocations(map);
 
@@ -135,13 +135,27 @@ public class MapControl {
         int column = map.getColumnCount();
         CharacterControl.moveCharacterToLocation(player1, row, column);
     }
-    
-    public static void printMap() 
-            throws ActionException{
-        try(FileOutputStream fops = new FileOutputStream("C:\\map.txt")){
-            ObjectOutputStream output = new ObjectOutputStream(fops);
-            output.writeObject(ZombieTakeover.getCurrentGame().getMap());
-        }catch(IOException e){
+
+    public static void printMap()
+            throws ActionException {
+        try (PrintWriter out = new PrintWriter("Game_map.txt")) {
+            out.println(ZombieTakeover.getPlayer().getName() + "'s Map");
+            Location[][] locations = ZombieTakeover.getCurrentGame().getMap().getLocations();
+
+            out.println("\n***** Urban Crawl ******");
+            out.println("   | 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | ");
+
+            for (int i = 0; i < locations[0].length; i++) {
+                out.format("%2d", i);
+                for (int j = 0; j < locations[0].length; j++) {
+                    out.print(" | ");
+                    out.print(locations[i][j].getScene().getSymbol());
+
+                }
+                out.print(" | ");
+            }
+            System.out.println("Map printed");
+        } catch (IOException e) {
             throw new ActionException(e.getMessage());
         }
     }

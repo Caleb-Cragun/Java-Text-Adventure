@@ -29,7 +29,7 @@ public enum Scene implements Serializable{
         book_store("A bookstore. Books in various stages of age litter the shelves.","BS"),
         fur_shop("A fur shop. This place gives you the fuzzies","FS"),
         hospital("A hospital. Lights flicker in the hallways.","HO"),
-        trap("A trap. You are injured.","TR"),
+        trap("A trap. You are injured.","DS"),
         ending("You stare at the fallen hasmat team, their eyes wide with fright "
                 + "but lifeless as you stand over them. You wonder what drew you "
                 + "to fight them. You come to an aweful realization as you look up "
