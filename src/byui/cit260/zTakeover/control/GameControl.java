@@ -177,6 +177,7 @@ public class GameControl {
         try(FileInputStream fips = new FileInputStream(filePath)){
             ObjectInputStream input = new ObjectInputStream(fips);
             game = (Game) input.readObject();
+            ZombieTakeover.setCurrentGame(game);
         }catch(FileNotFoundException fnfe){
             throw new ActionException(fnfe.getMessage());
         }catch(Exception e){
