@@ -9,6 +9,7 @@ import byui.cit260.zTakeover.control.CharacterControl;
 import byui.cit260.zTakeover.control.GameControl;
 import byui.cit260.zTakeover.control.MapControl;
 import byui.cit260.zTakeover.exception.MapControlException;
+import byui.cit260.zTakeover.model.FootstepCounter;
 import byui.cit260.zTakeover.model.Items;
 import byui.cit260.zTakeover.model.Location;
 import java.util.logging.Level;
@@ -92,7 +93,10 @@ public class GameMenuView extends View {
     }
 
     private void displayFootstepCounter() {
-        this.console.println("***displayFootstepCounter function called***");
+        FootstepCounter footsteps = new FootstepCounter();
+        int currentSteps = footsteps.getCounter();
+        
+        this.console.println("\nYou have walked " + currentSteps + " steps.");
     }
 
     private void displayAbilities() {

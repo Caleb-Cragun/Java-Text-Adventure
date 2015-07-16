@@ -6,6 +6,7 @@
 package byui.cit260.zTakeover.control;
 
 import byui.cit260.zTakeover.exception.MapControlException;
+import byui.cit260.zTakeover.model.FootstepCounter;
 import byui.cit260.zTakeover.model.Location;
 import byui.cit260.zTakeover.model.Map;
 import byui.cit260.zTakeover.model.Player;
@@ -13,7 +14,7 @@ import java.io.*;
 import zombietakeover.ZombieTakeover;
 
 public class CharacterControl {
-    private final String PROMPT = "Input a direction to go or back to return to the menu:";
+    private final String PROMPT = "\nInput a direction to go or back to return to the menu:";
     protected final BufferedReader keyboard = ZombieTakeover.getInFile();
     protected final PrintWriter console = ZombieTakeover.getOutFile();
     
@@ -97,59 +98,100 @@ public class CharacterControl {
         Map map = ZombieTakeover.getCurrentGame().getMap();
         Location location = ZombieTakeover.getCurrentLocation();
         
+        
         int currentRow = ZombieTakeover.getCurrentLocation().getX();
         int currentColumn = ZombieTakeover.getCurrentLocation().getY();
         
         int newRow = row + currentRow;
         int newColumn = column + currentColumn;
         
+        
+        
         if (newRow < 0 || newRow >= map.getRowCount() || newColumn < 0 || newColumn >= map.getColumnCount()){
             throw new MapControlException("Cannot move to " + (currentRow + row) + "," + (currentColumn + column) +
-                                          "because that location is out of the map boundaries.");
+                                          " because that location is out of the map boundaries.");
         }
         else if (row == 1){
             Location newLocation = new Location();
             location.setX(newRow);
             
             ZombieTakeover.setCurrentLocation(location);
+            
+            
+            
+            int newestRow = ZombieTakeover.getCurrentLocation().getX();
+            int newestColumn = ZombieTakeover.getCurrentLocation().getY();
+            System.out.println("\nYou are now located at " + newestRow + ", " + newestColumn);
         }
         else if (row == -1){
             Location newLocation = new Location();
             location.setX(newRow);
             
             ZombieTakeover.setCurrentLocation(location);
+            
+            int newestRow = ZombieTakeover.getCurrentLocation().getX();
+            int newestColumn = ZombieTakeover.getCurrentLocation().getY();
+            System.out.println("\nYou are now located at " + newestRow + ", " + newestColumn);
         }
         else if (column == 1){
             Location newLocation = new Location();
             location.setY(newColumn);
             
             ZombieTakeover.setCurrentLocation(location);
+            
+            int newestRow = ZombieTakeover.getCurrentLocation().getX();
+            int newestColumn = ZombieTakeover.getCurrentLocation().getY();
+            System.out.println("\nYou are now located at " + newestRow + ", " + newestColumn);
         }
         else{
             Location newLocation = new Location();
             location.setY(newColumn);
             
             ZombieTakeover.setCurrentLocation(location);
+            
+            int newestRow = ZombieTakeover.getCurrentLocation().getX();
+            int newestColumn = ZombieTakeover.getCurrentLocation().getY();
+            System.out.println("\nYou are now located at " + newestRow + ", " + newestColumn);
         }
     }
 
     private void moveNorth() throws MapControlException {
         Player player = ZombieTakeover.getPlayer();
+        FootstepCounter footsteps = new FootstepCounter();
         moveCharacterToLocation(player, -1, 0);
+        
+        int currentSteps = footsteps.getCounter();
+        int newSteps = currentSteps + 1;
+            footsteps.setCounter(newSteps);
     }
 
     private void moveEast() throws MapControlException {
         Player player = ZombieTakeover.getPlayer();
+        FootstepCounter footsteps = new FootstepCounter();
         moveCharacterToLocation(player, 0, 1);
+        
+        int currentSteps = footsteps.getCounter();
+        int newSteps = currentSteps + 1;
+            footsteps.setCounter(newSteps);
     }
 
     private void moveSouth() throws MapControlException {
         Player player = ZombieTakeover.getPlayer();
+        FootstepCounter footsteps = new FootstepCounter();
         moveCharacterToLocation(player, 1, 0);
+        
+        int currentSteps = footsteps.getCounter();
+        int newSteps = currentSteps + 1;
+            footsteps.setCounter(newSteps);
     }
 
     private void moveWest() throws MapControlException {
         Player player = ZombieTakeover.getPlayer();
+        FootstepCounter footsteps = new FootstepCounter();
         moveCharacterToLocation(player, 0, -1);
+        
+        int currentSteps = footsteps.getCounter();
+        int newSteps = currentSteps + 1;
+            footsteps.setCounter(newSteps);
     }
 }
