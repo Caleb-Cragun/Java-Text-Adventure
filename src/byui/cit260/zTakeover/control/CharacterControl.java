@@ -157,19 +157,16 @@ public class CharacterControl {
 
     private void moveNorth() throws MapControlException {
         Player player = ZombieTakeover.getPlayer();
-        FootstepCounter footsteps = new FootstepCounter();
-        moveCharacterToLocation(player, -1, 0);
         
-        int currentSteps = footsteps.getCounter();
-        int newSteps = currentSteps + 1;
-            footsteps.setCounter(newSteps);
+        moveCharacterToLocation(player, -1, 0);
+        MapControl.printScene();
     }
 
     private void moveEast() throws MapControlException {
         Player player = ZombieTakeover.getPlayer();
         FootstepCounter footsteps = new FootstepCounter();
         moveCharacterToLocation(player, 0, 1);
-        
+        MapControl.printScene();
         int currentSteps = footsteps.getCounter();
         int newSteps = currentSteps + 1;
             footsteps.setCounter(newSteps);
@@ -179,7 +176,7 @@ public class CharacterControl {
         Player player = ZombieTakeover.getPlayer();
         FootstepCounter footsteps = new FootstepCounter();
         moveCharacterToLocation(player, 1, 0);
-        
+        MapControl.printScene();
         int currentSteps = footsteps.getCounter();
         int newSteps = currentSteps + 1;
             footsteps.setCounter(newSteps);
@@ -189,7 +186,7 @@ public class CharacterControl {
         Player player = ZombieTakeover.getPlayer();
         FootstepCounter footsteps = new FootstepCounter();
         moveCharacterToLocation(player, 0, -1);
-        
+        MapControl.printScene();
         int currentSteps = footsteps.getCounter();
         int newSteps = currentSteps + 1;
             footsteps.setCounter(newSteps);

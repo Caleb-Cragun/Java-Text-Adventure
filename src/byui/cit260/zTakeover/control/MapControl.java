@@ -159,4 +159,10 @@ public class MapControl {
             throw new ActionException(e.getMessage());
         }
     }
+    
+    public static void printScene(){
+        Map map1 = ZombieTakeover.getCurrentGame().getMap();
+        Location[][] locations = map1.getLocations();
+        System.out.println("\n" + locations[ZombieTakeover.getCurrentLocation().getX()][ZombieTakeover.getCurrentLocation().getY()].getScene().getDescription());
+    }
 }

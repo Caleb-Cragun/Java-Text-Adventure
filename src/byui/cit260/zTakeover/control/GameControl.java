@@ -17,7 +17,8 @@ public class GameControl {
         ZombieTakeover.setCurrentGame(game1);
         
         game1.setPlayer(player);
-        
+        FootstepCounter footsteps = new FootstepCounter();
+        footsteps.setCounter(0);
         Items[] inventoryList = GameControl.createInventoryList();
         game1.setInventory(inventoryList);
         
@@ -25,6 +26,8 @@ public class GameControl {
         game1.setMap(map);
         
         MapControl.startAtLocation(map);
+        
+        MapControl.printScene();
     }
     
     public static Items[] createInventoryList(){

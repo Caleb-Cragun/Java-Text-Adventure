@@ -11,13 +11,13 @@ import java.io.Serializable;
  */
 public enum Scene implements Serializable{
         start("You come to in the dark. You find it very difficult to move, "
-                + "but still managable. You pick at the cover above you and then "
-                + "some dirt falls onto you. Your clawing brings more dirt down "
-                + "on top of you, but your persistance pays off. Suddenly your "
-                + "clawing brings you to the surface and you look around. Your "
-                + "tombstone stits behind you and you find yourself in the dirty, "
-                + "deserted alley you once new. All is silent, save the blowing "
-                + "of the wind.","ST"),
+                + "\nbut still managable. You pick at the cover above you and then "
+                + "\nsome dirt falls onto you. Your clawing brings more dirt down "
+                + "\non top of you, but your persistance pays off. Suddenly your "
+                + "\nclawing brings you to the surface and you look around. Your "
+                + "\ntombstone stits behind you and you find yourself in the dirty, "
+                + "\ndeserted alley you once new. All is silent, save the blowing "
+                + "\nof the wind.","ST"),
         deserted_street("An empty street...all is still...","DS"),
         sport_store("A run down sporting good store, the windows are broken in.","SS"),
         donut_shop("A donut shop. The smell of stale bread and spoiled surgar fills your nose.","DS"),
@@ -31,14 +31,14 @@ public enum Scene implements Serializable{
         hospital("A hospital. Lights flicker in the hallways.","HO"),
         trap("A trap. You are injured.","DS"),
         ending("You stare at the fallen hasmat team, their eyes wide with fright "
-                + "but lifeless as you stand over them. You wonder what drew you "
-                + "to fight them. You come to an aweful realization as you look up "
-                + "at the hospital. You collapse, crying as you realize that your "
-                + "hope at a second chance at life now lays dead at your feet. "
-                + "You look up at the faces of those who are still remaining in "
-                + "the hospital. Horror and awe are indistinct between them all. "
-                + "You shamble off into the distnce, never to be seen again."
-                + "The end. Thanks for playing.","EN");
+                + "\nbut lifeless as you stand over them. You wonder what drew you "
+                + "\nto fight them. You come to an aweful realization as you look up "
+                + "\nat the hospital. You collapse, crying as you realize that your "
+                + "\nhope at a second chance at life now lays dead at your feet. "
+                + "\nYou look up at the faces of those who are still remaining in "
+                + "\nthe hospital. Horror and awe are indistinct between them all. "
+                + "\nYou shamble off into the distnce, never to be seen again."
+                + "\nThe end. Thanks for playing.","EN");
         private String symbol;
         private String description;
     
@@ -49,6 +49,10 @@ public enum Scene implements Serializable{
     
         public String getSymbol(){
         return symbol;
+        }
+        
+        public String getDescription(){
+            return description;
         }
 
     @Override

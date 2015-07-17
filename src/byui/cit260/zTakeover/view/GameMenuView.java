@@ -5,13 +5,9 @@
  */
 package byui.cit260.zTakeover.view;
 
-import byui.cit260.zTakeover.control.CharacterControl;
-import byui.cit260.zTakeover.control.GameControl;
-import byui.cit260.zTakeover.control.MapControl;
+import byui.cit260.zTakeover.control.*;
 import byui.cit260.zTakeover.exception.MapControlException;
-import byui.cit260.zTakeover.model.FootstepCounter;
-import byui.cit260.zTakeover.model.Items;
-import byui.cit260.zTakeover.model.Location;
+import byui.cit260.zTakeover.model.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import zombietakeover.ZombieTakeover;
@@ -104,11 +100,12 @@ public class GameMenuView extends View {
     }
 
     private void moveCharacter() {
+        Map map1 = ZombieTakeover.getCurrentGame().getMap();
         CharacterControl character = new CharacterControl();
             try {
                 character.moveCharacter();
             } catch (MapControlException ex) {
-                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                ErrorView.display("GameMenuView", ex.getMessage());
             }
     }
 

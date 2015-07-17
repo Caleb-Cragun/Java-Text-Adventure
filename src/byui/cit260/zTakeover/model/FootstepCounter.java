@@ -6,7 +6,6 @@
 package byui.cit260.zTakeover.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 /**
  *
  * @author Onsite
@@ -25,6 +24,10 @@ public class FootstepCounter implements Serializable{
 
     public void setCounter(int counter) {
         this.counter = counter;
+    }
+    
+    public void moveCharacter(){
+        counter += 1;
     }
 
     @Override
