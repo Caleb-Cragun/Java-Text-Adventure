@@ -5,23 +5,29 @@
  */
 package byui.cit260.zTakeover.view;
 
+import byui.cit260.zTakeover.model.Ability;
+import byui.cit260.zTakeover.model.Items;
+import zombietakeover.ZombieTakeover;
+
 public class AbilitiesView extends View{
     public AbilitiesView(){
         super("\n---------------------------"
              +"\n      Abilites List       "
              +"\n---------------------------"
              +"\nSelect an Ability for Desc:"
-             +"\nM-Magic"
-             +"\nI-Ingition Proof"
-             +"\nP-Physical Damage Proof"
-             +"\nN-Night Vision"
-             +"\nF-Fast"
-             +"\nA-Always First"
-             +"\nB-Bear Vitality"
-             +"\nC-Cuteness"
-             +"\nS-Sane"
-             +"\nK-Knowledge on"
-             +"\nQ-Quit List"
+             +"\nM - Magic"
+             +"\nI - Ingition Proof"
+             +"\nP - Physical Damage Proof"
+             +"\nN - Night Vision"
+             +"\nF - Fast"
+             +"\nA - Always First"
+             +"\nB - Bear Vitality"
+             +"\nC - Cuteness"
+             +"\nS - Sane"
+             +"\nK - Knowledge on"
+             +"\nW - What abilities I posess"
+             +"\nD - Display sorted list"
+             +"\nQ - Quit List"
              +"\n---------------------------");
     }
     
@@ -61,6 +67,12 @@ public class AbilitiesView extends View{
             case 'K':
                 this.knowledgeDes();
                 break;
+            case 'W':
+                this.displayAbilitiesList();
+                break;
+            case 'D':
+                this.getSortedAbilityList();
+                break;
             case 'Q':
                 return true;
             default:
@@ -71,42 +83,56 @@ public class AbilitiesView extends View{
     }
 
     private void magicDes() {
-        this.console.println("Allows you to cast a variety of spells in combat.");
+        this.console.println(Ability.magic.getDescription());
     }
 
     private void ignitionDes() {
-        this.console.println("You're fireproof. Negates additional fire damage.");
+        this.console.println(Ability.ignition.getDescription());
     }
 
     private void physicalDes() {
-        this.console.println("You're unhurtable from physical attacks. Negates physical damage.");
+        this.console.println(Ability.physical.getDescription());
    }
 
     private void nightDes() {
-        this.console.println("You can see in the dark like it's noon in the desert.");
+        this.console.println(Ability.night.getDescription());
     }
 
     private void fastDes() {
-        this.console.println("You're a blur. Gives you +35 speed.");
+        this.console.println(Ability.fast.getDescription());
     }
 
     private void alwaysDes() {
-        this.console.println("You always get to attack first in combat.");
+        this.console.println(Ability.first.getDescription());
     }
 
     private void bearDes() {
-        this.console.println("Vitality of a bear. Gives you +50 hp.");
+        this.console.println(Ability.bear.getDescription());
     }
 
     private void cutenessDes() {
-        this.console.println("You're so cute it's almost sickening.");
+        this.console.println(Ability.cute.getDescription());
     }
 
     private void saneDes() {
-        this.console.println("You're all there.");
+        this.console.println(Ability.know.getDescription());
     }
 
     private void knowledgeDes() {
-        this.console.println("You have knowledge on a particular specified subject.");
+        this.console.println(Ability.know.getDescription());
+    }
+
+    private void displayAbilitiesList() {
+       Items[] inv = ZombieTakeover.getCurrentGame().getInventory();
+       this.console.println("\nAbilities you have: ");
+       for (int i = 3; i <= 12; i++){
+           if (inv[i].getAmount() > 0){
+               this.console.println(inv[i].getName());
+           }
+       }
+    }
+    
+    public void getSortedAbilityList(){
+        System.out.println("*** UnderConstruction ***");
     }
 }

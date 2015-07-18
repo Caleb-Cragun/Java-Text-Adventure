@@ -5,7 +5,6 @@
  */
 package byui.cit260.zTakeover.control;
 
-import byui.cit260.zTakeover.model.GameCharacter;
 import byui.cit260.zTakeover.model.Player;
 import byui.cit260.zTakeover.model.Race;
 import zombietakeover.ZombieTakeover;

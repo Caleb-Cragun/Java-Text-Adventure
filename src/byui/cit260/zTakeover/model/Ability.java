@@ -5,23 +5,21 @@
  */
 package byui.cit260.zTakeover.model;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Objects;
 /**
  *
  * @author The King's Wit
  */
 public enum Ability implements Serializable{
-    MAGIC("Allows you to cast a variety of spells in combat."),
-    IGNITION("You're fireproof. Negates additional fire damage."),
-    PHYSICAL("You're unhurtable from physical attacks. Negates physical damage."),
-    NIGHT("You can see in the dark like it's noon in the desert."),
-    FAST("You're a blur. Gives you +35 speed."),
-    FIRST("You always get to attack first in combat."),
-    BEAR("Vitality of a bear. Gives you +50 hp."),
-    CUTE("You're so cute it's almost sickening."),
-    SANE("You're all there."),
-    KNOW("You have knowledge on a particular specified subject.");
+    magic("Allows you to cast a variety of spells in combat."),
+    ignition("You're fireproof. Negates additional fire damage."),
+    physical("You're unhurtable from physical attacks. Negates physical damage."),
+    night("You can see in the dark like it's noon in the desert."),
+    fast("You're a blur. Gives you +35 speed."),
+    first("You always get to attack first in combat."),
+    bear("Vitality of a bear. Gives you +50 hp."),
+    cute("You're so cute it's almost sickening."),
+    sane("You're all there."),
+    know("You have encyclopedic knowledge.");
     private final String description;
 
     Ability(String description) {

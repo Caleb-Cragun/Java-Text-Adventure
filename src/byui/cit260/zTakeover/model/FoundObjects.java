@@ -13,27 +13,23 @@ import java.util.Objects;
  * @author Onsite
  */
 public enum FoundObjects implements Serializable{
-    STAFF("Magic"),
-    FIRE_EXTINGUISHER("Ignition proof"),
-    BOTTLED_GHOST("Physical damage proof"),
-    CATFISH("Night vision"),
-    RABBITS_FOOT("Fast"),
-    LEOPARD_FUR("Always first"),
-    BEAR_CLAW("Bear vitality"),
-    BARBIE_DOLL("Cuteness"),
-    MARBLES("Sane"),
-    ENCYCLOPEDIA("Knowledge on");
-    private String addAbility;
+    STAFF("A gnarled, wooden staff with strange symbols on it."),
+    FIRE_EXTINGUISHER("Rusted, but still contians compressed C02."),
+    BOTTLED_GHOST("You look at it...it looks at you...then proceeds to make faces."),
+    CATFISH("It meows audibly at you while its wiskers tickle you."),
+    RABBITS_FOOT("It's blue, probably due to no circulation."),
+    LEOPARD_FUR("Short haired mat that could double as a blanket in a pinch"),
+    BEAR_CLAW("Gooey, apple-filled doughnut that looks like a bear's claw."),
+    BARBIE_DOLL("A blast from the past and every little girl's favorite toy."),
+    MARBLES("A whole bag of shinies!"),
+    ENCYCLOPEDIA("How'd they get everything into one book? Simple. Ultra-fine print.");
+    private String description;
 
-    FoundObjects(String addAbility) {
-        this.addAbility=addAbility;
+    FoundObjects(String description) {
+        this.description=description;
     }
 
-    public String getAddAbility() {
-        return addAbility;
-    }
-
-    public void setAddAbility(String addAbility) {
-        this.addAbility = addAbility;
+    public String getDescription() {
+        return description;
     }
 }

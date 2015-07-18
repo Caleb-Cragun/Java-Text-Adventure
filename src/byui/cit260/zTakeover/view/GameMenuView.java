@@ -104,7 +104,9 @@ public class GameMenuView extends View {
     }
 
     private void displayAbilities() {
-        GameControl.getSortedAbilityList();
+        AbilitiesView aView = new AbilitiesView();
+        aView.display();
+        
     }
 
     private void moveCharacter() {

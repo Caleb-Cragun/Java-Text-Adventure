@@ -157,13 +157,6 @@ public class GameControl {
         }
         return inventoryList;
     }
-    
-    public static Ability getSortedAbilityList(){
-        for(Ability a : Ability.values()){
-            System.out.println(a);
-        }
-        return null;
-    }
 
     public static void saveGame(Game currentGame, String filePath) 
             throws ActionException{

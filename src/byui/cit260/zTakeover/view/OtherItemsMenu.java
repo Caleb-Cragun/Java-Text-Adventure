@@ -6,6 +6,7 @@
 package byui.cit260.zTakeover.view;
 
 import byui.cit260.zTakeover.exception.ActionException;
+import byui.cit260.zTakeover.model.FoundObjects;
 
 /**
  *
@@ -15,11 +16,11 @@ public class OtherItemsMenu extends View {
            
     public OtherItemsMenu(){
         super("\n"
-            +"\n-------------------------"
-            +"\n|       Other Items      |"
-            +"\n-------------------------"
+            +"\n---------------------------"
+            +"\n|        Other Items       |"
+            +"\n---------------------------"
             +"\nChoose an item that you"
-            +"\nwould like to consume."
+            +"\nwould like to know about."
             +"\nS - Staff"
             +"\nF - Fire Extinguisher"
             +"\nG - Bottled Ghost"
@@ -44,34 +45,34 @@ public class OtherItemsMenu extends View {
         
         switch (selection){
             case 's':
-                this.learnAbility();
+                this.displayDescription('s');
                 break;
             case 'f':
-                this.learnAbility();
+                this.displayDescription('f');
                 break;
             case 'g':
-                this.learnAbility();
+                this.displayDescription('g');
                 break;
             case 'c':
-                this.learnAbility();
+                this.displayDescription('c');
                 break;
             case 'r':
-                this.learnAbility();
+                this.displayDescription('r');
                 break;
             case 'l':
-                this.learnAbility();
+                this.displayDescription('l');
                 break;
             case 'b':
-                this.learnAbility();
+                this.displayDescription('b');
                 break;
             case 'd':
-                this.learnAbility();
+                this.displayDescription('d');
                 break;
             case 'm':
-                this.learnAbility();
+                this.displayDescription('m');
                 break;
             case 'e':
-                this.learnAbility();
+                this.displayDescription('e');
                 break;
             case 'q':
                 return true;
@@ -81,21 +82,44 @@ public class OtherItemsMenu extends View {
         }
         return false;
     }
-
-/***********************************************************************************    
-    Stub Function for learnAblity()
-***********************************************************************************/
     
-    private void learnAbility() {
-        try{
-            learnNewAbility();
-        }catch (Throwable n){
-            this.console.println(n.getMessage());
+    public void displayDescription(char des){
+        switch(des){
+            case 's':
+                this.console.println(FoundObjects.STAFF.getDescription());
+                break;
+            case 'f':
+                this.console.println(FoundObjects.FIRE_EXTINGUISHER.getDescription());
+                break;
+            case 'g':
+                this.console.println(FoundObjects.BOTTLED_GHOST.getDescription());
+                break;
+            case 'c':
+                this.console.println(FoundObjects.CATFISH.getDescription());
+                break;
+            case 'r':
+                this.console.println(FoundObjects.RABBITS_FOOT.getDescription());
+                break;
+            case 'l':
+                this.console.println(FoundObjects.LEOPARD_FUR.getDescription());
+                break;
+            case 'b':
+                this.console.println(FoundObjects.BEAR_CLAW.getDescription());
+                break;
+            case 'd':
+                this.console.println(FoundObjects.BARBIE_DOLL.getDescription());
+                break;
+            case 'm':
+                this.console.println(FoundObjects.MARBLES.getDescription());
+                break;
+            case 'e':
+                this.console.println(FoundObjects.ENCYCLOPEDIA.getDescription());
+                break;
+            default:
+                this.console.println("***Invalid entry, try again.***");
+                break;
         }
     }
-
-    private void learnNewAbility(){
-        this.console.println("*** learnAbility function called ***");
-    }
+    
 }
 
