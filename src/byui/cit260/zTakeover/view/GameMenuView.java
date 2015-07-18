@@ -18,15 +18,17 @@ public class GameMenuView extends View {
             +"\n------------------------"
             +"\n|      Game Menu       |"
             +"\n------------------------"
-            +"\nD-Display Inventory"
-            +"\nF-Footstep Counter"
-            +"\nA-Ability list"
-            +"\nM-Move Character"
-            +"\nV-View Map"
-            +"\nH-Help Menu"
-            +"\nS-Save Game"
-            +"\nP-Print Map"
-            +"\nE-Exit Game"
+            +"\nD - Display Inventory"
+            +"\nF - Footstep Counter"
+            +"\nA - Ability list"
+            +"\nM - Move Character"
+            +"\nK - Kick down the door"
+            +"\nT - Display Stats"
+            +"\nV - View Map"
+            +"\nH - Help Menu"
+            +"\nS - Save Game"
+            +"\nP - Print Map"
+            +"\nE - Exit Game"
             +"\n------------------------");
         }
     @Override
@@ -53,8 +55,14 @@ public class GameMenuView extends View {
             case 'h':
                 this.displayHelpMenu();
                 break;
+            case 'k':
+                this.kickDoor();
+                break;
             case 's':
                 this.saveGame();
+                break;
+            case 't':
+                this.displayStats();
                 break;
             case 'p':
                 this.printMap();
@@ -152,5 +160,14 @@ public class GameMenuView extends View {
         }catch(Exception ex){
             ErrorView.display("GameMenuView", ex.getMessage());
         }
+    }
+
+    private void kickDoor() {
+        SceneControl.checkScene();
+    }
+
+    private void displayStats() {
+        this.console.println("\n Health: " + ZombieTakeover.getCurrentGame().getPlayer().getHealth());
+        this.console.println("\n Speed : " + ZombieTakeover.getCurrentGame().getPlayer().getSpeed());
     }
 }

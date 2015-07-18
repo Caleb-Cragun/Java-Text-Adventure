@@ -100,11 +100,11 @@ public class GameControl {
         
         Items shovel = new Items();
         shovel.setAmount(0);
-        shovel.setDescription("Shovel");
+        shovel.setDescription("Broken Shovel");
         inventory[13]=shovel;
         
         Items fist = new Items();
-        fist.setAmount(0);
+        fist.setAmount(1);
         fist.setDescription("Fist");
         inventory[14]=fist;
         

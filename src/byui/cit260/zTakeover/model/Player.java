@@ -17,6 +17,8 @@ public class Player implements Serializable{
     private String name;
     private Game game1;
     private GameCharacter character;
+    private double health;
+    private double speed;
     
     public Player() {
     }
@@ -45,6 +47,23 @@ public class Player implements Serializable{
     public void setCharacter(GameCharacter character) {
         this.character = character;
     }
+
+    public double getHealth() {
+        return health;
+    }
+
+    public void setHealth(double health) {
+        this.health = health;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+    
         
     @Override
     public String toString() {

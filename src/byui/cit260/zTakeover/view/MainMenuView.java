@@ -3,7 +3,9 @@ package byui.cit260.zTakeover.view;
 import byui.cit260.zTakeover.control.*;
 import byui.cit260.zTakeover.exception.ActionException;
 import byui.cit260.zTakeover.exception.MapControlException;
+import byui.cit260.zTakeover.model.GameCharacter;
 import byui.cit260.zTakeover.model.Player;
+import byui.cit260.zTakeover.model.Race;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,13 +61,15 @@ public class MainMenuView extends View{
 
     private void startNewGame() throws ActionException {
         String playerName = this.getPlayerName();
+        char race = this.getPlayerRace();
         try{
-           Player player = ProgramControl.createPlayer(playerName); 
+           Player player = ProgramControl.createPlayer(playerName,race); 
         }catch (Throwable me){
             this.console.println(me.getMessage());
         }
         //Create gameCharacter
-        Player player = ProgramControl.createPlayer(playerName);
+        Player player = ProgramControl.createPlayer(playerName,race);
+        
         //Display welcome message
         this.displayWelcomeMessage(player);
         try{
@@ -143,6 +147,38 @@ public class MainMenuView extends View{
                 this.console.println("Error reading input: " + ex.getMessage());
         }
         return playerName;
+    }
+
+    private char getPlayerRace() {
+        boolean valid = false;
+        char pRace = ' ';
+        try {
+        while(valid==false){
+            
+                //Prompt user for name
+                this.console.println("Please input one of the following letters to select your race:");
+                this.console.println("A - Runner " + Race.runner.getDescription());
+                this.console.println("B - Survivor " + Race.survivor.getDescription());
+                this.console.println("C - Shambler " + Race.shambler.getDescription());
+                
+                //Get name and trim off blanks
+                String playerRace = this.keyboard.readLine();
+                playerRace = playerRace.toLowerCase();
+                pRace = playerRace.charAt(0);
+                
+                
+                //Checks to see if the name is valid
+                if (playerRace.length()<1){
+                    this.console.println("Invalid selection. Try again.");
+                }else{
+                    valid=true;
+                }
+                
+            } 
+        }catch (IOException ex) {
+                this.console.println("Error reading input: " + ex.getMessage());
+        }
+        return pRace;
     }
 
     
