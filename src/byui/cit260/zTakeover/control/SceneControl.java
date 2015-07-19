@@ -190,6 +190,7 @@ public class SceneControl {
                 }
                 break;
             case trap:
+            case hasmat:
                 checkEncounter();
                 break;
             case start:

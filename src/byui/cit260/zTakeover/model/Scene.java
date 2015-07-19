@@ -30,6 +30,7 @@ public enum Scene implements Serializable{
         fur_shop("A fur shop. This place gives you the fuzzies","FS"),
         hospital("A hospital. Lights flicker in the hallways.","HO"),
         trap("You appear to be in a deserted street.","DS"),
+        hasmat("You see a bunch of men in suits huddled together","HT"),
         ending("You stare at the fallen hasmat team, their eyes wide with fright "
                 + "\nbut lifeless as you stand over them. You wonder what drew you "
                 + "\nto fight them. You come to an aweful realization as you look up "

@@ -126,7 +126,7 @@ public class MapControl {
         locations[9][6].setScene(Scene.deserted_street);
         locations[9][7].setScene(Scene.trap);
         locations[9][8].setScene(Scene.donut_shop);
-        locations[9][9].setScene(Scene.ending);
+        locations[9][9].setScene(Scene.hasmat);
     }
 
     public static void startAtLocation(Map map) throws MapControlException {
