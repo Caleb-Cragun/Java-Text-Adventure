@@ -8,6 +8,7 @@ package byui.cit260.zTakeover.control;
 import byui.cit260.zTakeover.exception.ActionException;
 import byui.cit260.zTakeover.model.*;
 import byui.cit260.zTakeover.view.CombatView;
+import byui.cit260.zTakeover.view.MainMenuView;
 import java.util.Random;
 import zombietakeover.ZombieTakeover;
 
@@ -235,7 +236,9 @@ public class SceneControl {
         
         CombatView combat = new CombatView();
         combat.display();
-        
+        Scene.ending.getDescription();
+        MainMenuView nView = new MainMenuView();
+        nView.display();
     }
 
     public double combatSpellDamage(double stepCounter, double numItems, double randomNum) throws ActionException {

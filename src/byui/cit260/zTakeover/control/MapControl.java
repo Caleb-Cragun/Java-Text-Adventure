@@ -142,7 +142,7 @@ public class MapControl {
             out.println(ZombieTakeover.getPlayer().getName() + "'s Map");
             Location[][] locations = ZombieTakeover.getCurrentGame().getMap().getLocations();
 
-            out.println("\n***** Urban Crawl ******");
+            out.println("\n                 ***** Urban Crawl ******            ");
             out.println("   | 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | ");
 
             for (int i = 0; i < locations[0].length; i++) {

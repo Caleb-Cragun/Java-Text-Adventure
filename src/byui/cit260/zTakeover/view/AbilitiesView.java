@@ -26,7 +26,6 @@ public class AbilitiesView extends View{
              +"\nS - Sane"
              +"\nK - Knowledge on"
              +"\nW - What abilities I posess"
-             +"\nD - Display sorted list"
              +"\nQ - Quit List"
              +"\n---------------------------");
     }
@@ -69,9 +68,6 @@ public class AbilitiesView extends View{
                 break;
             case 'W':
                 this.displayAbilitiesList();
-                break;
-            case 'D':
-                this.getSortedAbilityList();
                 break;
             case 'Q':
                 return true;
@@ -127,12 +123,44 @@ public class AbilitiesView extends View{
        this.console.println("\nAbilities you have: ");
        for (int i = 3; i <= 12; i++){
            if (inv[i].getAmount() > 0){
-               this.console.println(inv[i].getName());
+               String des = inv[i].getName();
+               des = des.toLowerCase();
+               switch (des){
+                   case "staff":
+                       this.console.println(Ability.magic.name());
+                       break;
+                   case "fire extinguisher":
+                       this.console.println(Ability.ignition.name());
+                       break;
+                    case "bottled ghost":
+                       this.console.println(Ability.physical.name());
+                       break;
+                    case "catfish":
+                       this.console.println(Ability.night.name());
+                       break;
+                    case "rabbits foot":
+                       this.console.println(Ability.fast.name());
+                       break;
+                    case "leopard fur":
+                       this.console.println(Ability.first.name());
+                       break;
+                    case "bear claw":
+                       this.console.println(Ability.bear.name());
+                       break;
+                    case "barbie doll":
+                       this.console.println(Ability.cute.name());
+                       break;
+                    case "marbles":
+                       this.console.println(Ability.sane.name());
+                       break;
+                    case "encyclopedia":
+                       this.console.println(Ability.know.name());
+                       break;
+               }
+           } else{
+               this.console.println("You don't have this ability yet.");
            }
        }
     }
     
-    public void getSortedAbilityList(){
-        System.out.println("*** UnderConstruction ***");
-    }
 }
