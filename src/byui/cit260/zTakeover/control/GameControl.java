@@ -64,7 +64,7 @@ public class GameControl {
         
         Items bottle = new Items();
         bottle.setAmount(0);
-        bottle.setDescription("Empty Bottle");
+        bottle.setDescription("Bottled Ghost");
         inventory[5]=bottle;
         
         Items fish = new Items();
@@ -74,7 +74,7 @@ public class GameControl {
         
         Items foot = new Items();
         foot.setAmount(0);
-        foot.setDescription("Rabit' Foot");
+        foot.setDescription("Rabbit' Foot");
         inventory[7]=foot;
         
         Items fur = new Items();

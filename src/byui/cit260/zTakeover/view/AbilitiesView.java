@@ -123,37 +123,36 @@ public class AbilitiesView extends View{
        this.console.println("\nAbilities you have: ");
        for (int i = 3; i <= 12; i++){
            if (inv[i].getAmount() > 0){
-               String des = inv[i].getName();
-               des = des.toLowerCase();
+               String des = inv[i].getDescription();
                switch (des){
-                   case "staff":
+                   case "Staff":
                        this.console.println(Ability.magic.name());
                        break;
-                   case "fire extinguisher":
+                   case "Fire Extinguisher":
                        this.console.println(Ability.ignition.name());
                        break;
-                    case "bottled ghost":
+                    case "Bottled Ghost":
                        this.console.println(Ability.physical.name());
                        break;
-                    case "catfish":
+                    case "Catfish":
                        this.console.println(Ability.night.name());
                        break;
-                    case "rabbits foot":
+                    case "Rabbit' Foot":
                        this.console.println(Ability.fast.name());
                        break;
-                    case "leopard fur":
+                    case "Leopard Fur":
                        this.console.println(Ability.first.name());
                        break;
-                    case "bear claw":
+                    case "Bear Claw Dounut":
                        this.console.println(Ability.bear.name());
                        break;
-                    case "barbie doll":
+                    case "Barbie Doll":
                        this.console.println(Ability.cute.name());
                        break;
-                    case "marbles":
+                    case "Marbles":
                        this.console.println(Ability.sane.name());
                        break;
-                    case "encyclopedia":
+                    case "Encyclopedia":
                        this.console.println(Ability.know.name());
                        break;
                }

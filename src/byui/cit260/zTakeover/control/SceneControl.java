@@ -20,6 +20,13 @@ public class SceneControl {
         Location[][] locations = map1.getLocations();
         Random chanceCube = new Random();
         int roll = chanceCube.nextInt(4) + 1;
+        int specialRoll = chanceCube.nextInt(1000);
+        if (specialRoll == 13 && inv[5].getAmount() == 0){
+            double eb = inv[5].getAmount();
+            eb += 1;
+            inv[5].setAmount(eb);
+            System.out.println("You found " + inv[5].getDescription());
+        }
         switch (locations[ZombieTakeover.getCurrentLocation().getX()][ZombieTakeover.getCurrentLocation().getY()].getScene()) {
             case sport_store:
                 if (roll == 1 && inv[15].getAmount() == 0) {
@@ -181,12 +188,7 @@ public class SceneControl {
                     double hb = inv[2].getAmount();
                     hb += 1;
                     inv[2].setAmount(hb);
-                    System.out.println("You found " + inv[2].getDescription());
-                } else if (roll == 3 && inv[5].getAmount() == 0) {
-                    double eb = inv[5].getAmount();
-                    eb += 1;
-                    inv[5].setAmount(eb);
-                    System.out.println("You found " + inv[5].getDescription());
+                    System.out.println("You found " + inv[2].getDescription());                    
                 } else {
                     System.out.println("\nYou find nothing.");
                 }
