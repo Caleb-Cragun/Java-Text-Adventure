@@ -7,6 +7,7 @@ package byui.cit260.zTakeover.control;
 
 import byui.cit260.zTakeover.exception.ActionException;
 import byui.cit260.zTakeover.model.*;
+import byui.cit260.zTakeover.view.CombatView;
 import java.util.Random;
 import zombietakeover.ZombieTakeover;
 
@@ -190,8 +191,9 @@ public class SceneControl {
                 }
                 break;
             case trap:
-            case hasmat:
                 checkEncounter();
+            case hasmat:
+                checkEndEncounter();
                 break;
             case start:
                 if (roll == 1 && inv[13].getAmount() == 0) {
@@ -209,7 +211,31 @@ public class SceneControl {
     }
 
     private static void checkEncounter() {
-        System.out.println("*** checkEncounter function called ***");
+        System.out.println("\nYou are being ambushed by a villager!");
+        
+        Enemies villager = new Enemies();
+        villager.setHealth(15);
+        villager.setSpeed(30);
+        villager.setPower(5);
+        
+        CombatView combat = new CombatView();
+        combat.display();
+        
+    }
+    
+    private static void checkEndEncounter() {
+        System.out.println("\nYou find yourself facing the Hasmat Team."
+                + "\nThey stand ready to protect the doughnut shop against"
+                + "\nall who dare to trespass, especially zombies.");
+        
+        Enemies hasmat = new Enemies();
+        hasmat.setHealth(150);
+        hasmat.setSpeed(40);
+        hasmat.setPower(3);
+        
+        CombatView combat = new CombatView();
+        combat.display();
+        
     }
 
     public double combatSpellDamage(double stepCounter, double numItems, double randomNum) throws ActionException {

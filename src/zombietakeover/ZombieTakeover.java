@@ -11,6 +11,7 @@ public class ZombieTakeover {
     private static Game currentGame=null;
     private static Player player=null;
     private static Location currentLocation = null;
+    private static FootstepCounter currentSteps = null;
 
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
@@ -39,6 +40,14 @@ public class ZombieTakeover {
 
     public static void setCurrentLocation(Location currentLocation) {
         ZombieTakeover.currentLocation = currentLocation;
+    }
+
+    public static FootstepCounter getCurrentSteps() {
+        return currentSteps;
+    }
+
+    public static void setCurrentSteps(FootstepCounter currentSteps) {
+        ZombieTakeover.currentSteps = currentSteps;
     }
     
 
